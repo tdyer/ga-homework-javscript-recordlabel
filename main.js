@@ -3,9 +3,12 @@
 
 var RCApp = {
 
-  new_artist_button: document.getElementById('add-artist'),
-  new_album_button: document.getElementById('add-album'),
-  new_label_button: document.getElementById('add-label'),
+  add_artist_button: document.getElementById('add-artist'),
+  add_album_button: document.getElementById('add-album'),
+  add_label_button: document.getElementById('add-label'),
+  new_label_button: document.getElementById('new-label-button'),
+  new_artist_button: document.getElementById('new-artist-button'),
+  new_album_button: document.getElementById('new-album-button'),
 
   new_artist_form: document.getElementById('new-artist-form'),
   new_album_form: document.getElementById('new-album-form'),
@@ -18,18 +21,27 @@ var RCApp = {
 };
 
 RCApp.setButtonEvents = function() {
-  RCApp.new_artist_button.addEventListener('click', RCApp.new_artist_button_response);
-  RCApp.new_album_button.addEventListener('click', RCApp.new_album_button_response);
-  RCApp.new_label_button.addEventListener('click', RCApp.new_label_button_response);
+  RCApp.add_artist_button.addEventListener('click', RCApp.add_artist_button_response);
+  RCApp.add_album_button.addEventListener('click', RCApp.add_album_button_response);
+  RCApp.add_label_button.addEventListener('click', RCApp.add_label_button_response);
+
+  RCApp.new_album_button.addEventListener('click', function(event) {
+    event.preventDefault();
+    RCApp.create_new_album();
+  });
+
+  RCApp.new_artist_button.addEventListener('click', function(event) {
+    event.preventDefault();
+    RCApp.create_new_artist();
+  });
+
+  RCApp.new_label_button.addEventListener('click', function(event) {
+    event.preventDefault();
+    RCApp.create_new_label();
+  });
+
 };
 
-RCApp.showForm = function(form) {
-  form.className = 'hide';
-};
-
-RCApp.hideForm = function(form) {
-	form.className = 'show';
-}
 
 RCApp.Album = function(name, description, genre) {
   this.name = name;
@@ -43,12 +55,19 @@ RCApp.Album.prototype.generateHTML = function() {
   document.getElementById('albums').innerHTML += html;
 };
 
-RCApp.new_album_button_response = function() {
-	var name = prompt('Album Name');
-	var description = prompt('Album Description');
-	var genre = prompt('Album Genre');
+RCApp.add_album_button_response = function() {
+	RCApp.add_album_button.className = 'hide';
+	RCApp.new_album_form.className = 'show';
+};
+
+RCApp.create_new_album = function() {
+	var name = document.getElementById('album-name-input').value;
+	var description = document.getElementById('album-description-input').value;
+	var genre = document.getElementById('album-genre-input').value;
 	var new_album = new RCApp.Album(name, description, genre);
 	new_album.generateHTML();
+	RCApp.new_album_form.className = 'hide';
+	RCApp.add_album_button.className = 'show';
 };
 
 RCApp.Artist = function(name, description) {
@@ -62,11 +81,18 @@ RCApp.Artist.prototype.generateHTML = function() {
   document.getElementById('artists').innerHTML += html;
 };
 
-RCApp.new_artist_button_response = function() {
-	var name = prompt('Artist Name');
-	var description = prompt('Artist Description');
+RCApp.add_artist_button_response = function() {
+	RCApp.add_artist_button.className = 'hide';
+	RCApp.new_artist_form.className = 'show';
+};
+
+RCApp.create_new_artist = function() {
+	var name = document.getElementById('artist-name-input').value;
+	var description = document.getElementById('artist-description-input').value;
 	var new_artist = new RCApp.Artist(name, description);
 	new_artist.generateHTML();
+	RCApp.add_artist_button.className = 'show';
+	RCApp.new_artist_form.className = 'hide';
 };
 
 RCApp.Label = function(name) {
@@ -79,10 +105,18 @@ RCApp.Label.prototype.generateHTML = function() {
   document.getElementById('labels').innerHTML += html;
 };
 
-RCApp.new_label_button_response = function() {
-	var name = prompt('Record Label Name');
+RCApp.add_label_button_response = function() {
+	RCApp.add_label_button.className = 'hide';
+	RCApp.new_label_form.className = 'show';
+};
+
+RCApp.create_new_label = function() {
+	var name = document.getElementById('label-name-input').value;
 	var new_label = new RCApp.Label(name);
 	new_label.generateHTML();
+	RCApp.add_label_button.className = 'show';
+	RCApp.new_label_form.className = 'hide';
 };
+
 
 RCApp.setButtonEvents();
