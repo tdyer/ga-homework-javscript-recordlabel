@@ -1,1 +1,9 @@
-// Application namespace
+var RCApp = {
+
+
+
+
+
+
+}; 
+
