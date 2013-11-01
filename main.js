@@ -23,6 +23,14 @@ RCApp.setButtonEvents = function() {
   RCApp.new_label_button.addEventListener('click', RCApp.new_label_button_response);
 };
 
+RCApp.showForm = function(form) {
+  form.className = 'hide';
+};
+
+RCApp.hideForm = function(form) {
+	form.className = 'show';
+}
+
 RCApp.Album = function(name, description, genre) {
   this.name = name;
   this.description = description;
