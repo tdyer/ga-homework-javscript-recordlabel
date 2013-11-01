@@ -48,18 +48,19 @@
 // description and create the artist. Once the artist is created it's
 // name should be shown in the list of artists.
 
-
 var RCApp = {
 
-artistButton = document.getElementById('add-artist'),
-albumButton = document.getElementById('add-album'),
+artistButton: document.getElementById('add-artist'),
+albumButton: document.getElementById('add-album'),
 
 setButtonEvent: function() {
 	RCApp.artistButton.addEventListener('click', RCApp.clickResponseArtist);
-	RCApp.albumButton.addEventListener('click'), RCApp.clickResponseAlbum);
+	RCApp.albumButton.addEventListener('click', RCApp.clickResponseAlbum);
 }, 
 
 clickResponseArtist: function() {
+	RCApp.addArtist();
+	RCApp.changeArtistButtonText();
 
 }, 
 
@@ -68,16 +69,22 @@ clickResponseAlbum: function() {
 },
 
 addArtist: function() {
-
-
+	var artist_name = document.getElementById('artist-name').value,
+			artist_desc = document.getElementById('artist-desc').value, 
+			artist_lists = document.getElementById('artists');
+	artist_lists.innerHTML = artist_name + ":" + artist_desc;
 },
 
-RecordLabel = function() {
+changeArtistButtonText: function() {
+	RCApp.artistButton.innerHTML = 'Submit New Artist';
+},
+
+RecordLabel: function() {
 	this.name = name; 
 
 },
 
-Artist = function() {
+Artist: function() {
 	this.name = name; 
 },
 
@@ -86,6 +93,11 @@ Artist = function() {
 },
 
 
+};
 
-}; 
+RCApp.setButtonEvent();
+
+
+
+
 
