@@ -7,6 +7,10 @@ var RCApp = {
   new_album_button: document.getElementById('add-album'),
   new_label_button: document.getElementById('add-label'),
 
+  new_artist_form: document.getElementById('new-artist-form'),
+  new_album_form: document.getElementById('new-album-form'),
+  new_label_form: document.getElementById('new-label-form'),
+
   albums: document.getElementById('albums'),
   artists: document.getElementById('artists'),
   labels: document.getElementById('labels'),
