@@ -42,11 +42,6 @@
 // At the bottom of the page should be section that will show either the
 // artist or album's description when a user clicks.
 
-// A record company should have a hidden form that will add artists. The
-// hidden form will be shown when the user clicks an "Add Artist"
-// button. Then the user should be able to add an artist's name and
-// description and create the artist. Once the artist is created it's
-// name should be shown in the list of artists.
 
 var RCApp = {
 
@@ -79,21 +74,37 @@ changeArtistButtonText: function() {
 	RCApp.artistButton.innerHTML = 'Submit New Artist';
 },
 
-RecordLabel: function() {
-	this.name = name; 
+artists: [],
 
-},
-
-Artist: function() {
-	this.name = name; 
-},
-
- Album: function() {
-	this.name = name; 
-},
-
+albums: []
 
 };
+
+RCApp.RecordLabel = function() {
+	this.name = name; 
+
+};
+
+RCApp.Artist = function(name, description) {
+	this.name = artist_name;
+	this.description = artist_desc;
+};
+
+RCApp.Artist.prototype.generate_html = function() {
+		var artists
+	};
+
+ RCApp.Album = function(name, description) {
+	this.name = album_name;
+	this.description = album_desc;
+	this.artist = artist_name; //not sure about naming
+};
+
+RCApp.Album.prototype.generate_html = function() {
+
+};
+
+
 
 RCApp.setButtonEvent();
 
