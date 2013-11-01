@@ -5,20 +5,21 @@
     <title>Course Registration</title>
   </head>
   <body>
-    <a id='add-teacher' onClick='add_teacher();return false;'>Add Teacher</a>
-    <a id='add-course' onClick='add_course();return false;'>Add Course</a>
-    <a id='add-student'onClick='add_student();return false;'>Add Student</a>
-    <div>
-      <div id='courses'>
-      </div> 
-
-      <div id='teachers'>
-      </div>
-
-      <div id='students'>
-      </div>
+    <div id='record_company'>
+      <p id='rc-name> </p>
+      <p id='rc-description> </p>
+      <ul id='artists'>
+     </ul>
+      <button id='add-album'>Add an Album</button>
     </div>
-    <script src='main.js'>
+    <div id='desc'>
+    </div>
+
+    <script src='src/common.js'>
+    <script src='src/record_company.js'>
+    <script src='src/artist.js'>
+    <script src='src/album.js'>
+    <script src='src/main.js'>
     </script>
   </body>
 </html>
