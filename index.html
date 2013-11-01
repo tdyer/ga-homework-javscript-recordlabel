@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset=utf-8 />
-    <title>RCApp Record Company</title>
-  </head>
-  <body>
-    <div id='record_company'>
-      <p id='rc-name> </p>
-      <p id='rc-description> </p>
-      <ul id='artists'>
-     </ul>
-      <button id='add-album'>Add an Album</button>
-      <button id='add-artist'>Add an Artist</button>
+<head>
+  <meta charset=utf-8 />
+  <title>RCApp Record Company</title>
+</head>
+<body>
+  <div id='record_company'>
+    <p id='rc-name> </p>
+    <p id='rc-description> </p>
+    <ul id='artists'>
+    </ul>
+    <button id='add-album'>Add an Album</button>
+    <button id='add-artist'>Add an Artist</button>
 
+  </div>
+  <div id='desc'>
+    <div class="form" id="artist-form">
+      <form>
+        Artist Name: <input type="text" placeholder="Add Artist Name"><br>
+        Artist Description: <input type="text" placeholder="Artist Description">
+        <input type="submit" value="Submit" placeholder="SUBMIT">
+      </form>
     </div>
-    <div id='desc'>
-    </div>
+  </div>
 
-    <script src='src/common.js'>
+  <script src='src/common.js'>
     <script src='src/record_company.js'>
-    <script src='src/artist.js'>
-    <script src='src/album.js'>
-    <script src='src/main.js'>
-    </script>
-  </body>
-</html>
+      <script src='src/artist.js'>
+        <script src='src/album.js'>
+          <script src='src/main.js'>
+          </script>
+        </body>
+        </html>

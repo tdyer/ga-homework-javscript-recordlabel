@@ -68,24 +68,22 @@ clickResponseAlbum: function() {
 },
 
 addArtist: function() {
-	
+
 
 },
 
-var RecordLabel = function() {
+RecordLabel = function() {
 	this.name = name; 
 
-}; 
+},
 
-var Artist = function() {
+Artist = function() {
 	this.name = name; 
-};
+},
 
-var Album = function() {
+ Album: function() {
 	this.name = name; 
-};
-
-
+},
 
 
 
