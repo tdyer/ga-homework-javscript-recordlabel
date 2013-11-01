@@ -10,23 +10,28 @@ var RCApp = {
   albums: document.getElementById('albums'),
   artists: document.getElementById('artists'),
   labels: document.getElementById('labels'),
-  
-  setButtonEvents: function() {
-    RCApp.new_artist_button.addEventListener('click', RCApp.new_artist_button_response);
-    RCApp.new_album_button.addEventListener('click', RCApp.new_album_button_response);
-    RCApp.new_label_button.addEventListener('click', RCApp.new_label_button_response);
-  },
 
 };
 
-RCApp.setButtonEvents();
+RCApp.setButtonEvents = function() {
+  RCApp.new_artist_button.addEventListener('click', RCApp.new_artist_button_response);
+  RCApp.new_album_button.addEventListener('click', RCApp.new_album_button_response);
+  RCApp.new_label_button.addEventListener('click', RCApp.new_label_button_response);
+};
 
 RCApp.MusicThing = function() {
 };
 
-RCApp.MusicThing.prototype.generateHTML = function() {
-      return '<li>' + this.name + '</li>';
+RCApp.MusicThing.prototype.render_item = function() {
+  var html = '';
+  html = this.generateHTML();
+  document.getElementById(this + 's').innerHTML += html;
 };
+
+// RCApp.MusicThing.prototype.generateHTML = function(name) {
+// 	this.name = name;
+//   return '<li>' + this.name + '</li>';
+// };
 
 RCApp.Album = new RCApp.MusicThing();
 RCApp.Album = function(name, description, genre) {
@@ -34,7 +39,11 @@ RCApp.Album = function(name, description, genre) {
   this.description = description;
   this.genre = genre;
   this.artists = [];
-  this.prototype = RCApp.MusicThing.prototype;
+};
+
+RCApp.Album.prototype.generateHTML = function() {
+  this.name = name;
+  return '<li>' + this.name + '</li>';
 };
 
 RCApp.new_album_button_response = function() {
@@ -42,7 +51,7 @@ RCApp.new_album_button_response = function() {
 	var description = prompt('Album Description');
 	var genre = prompt('Album Genre');
 	var new_album = new RCApp.Album(name, description, genre);
-	RCApp.albums.innerHTML += new_album.generateHTML;
+	new_album.render_item();
 };
 
 RCApp.Artist = new RCApp.MusicThing();
@@ -52,11 +61,16 @@ RCApp.Artist = function(name, description) {
   this.albums = [];
 };
 
+RCApp.Artist.prototype.generateHTML = function() {
+  this.name = name;
+  return '<li>' + this.name + '</li>';
+};
+
 RCApp.new_artist_button_response = function() {
 	var name = prompt('Artist Name');
 	var description = prompt('Artist Description');
 	var new_artist = new RCApp.Artist(name, description);
-  RCApp.artists.innerHTML += new_artist.generateHTML();
+	new_artist.render_item();
 };
 
 RCApp.Label = new RCApp.MusicThing();
@@ -65,9 +79,15 @@ RCApp.Label = function(name) {
   this.artists = [];
 };
 
+RCApp.Label.prototype.generateHTML = function() {
+  this.name = name;
+  return '<li>' + this.name + '</li>';
+};
+
 RCApp.new_label_button_response = function() {
 	var name = prompt('Record Label Name');
 	var new_label = new RCApp.Label(name);
-  RCApp.labels.innerHTML += new_label.generateHTML();
+	new_label.render_item();
 };
 
+RCApp.setButtonEvents();
