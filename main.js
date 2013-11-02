@@ -73,9 +73,8 @@ var RCApp = {
 		var name = document.getElementById('artist-name').value,
 		description = document.getElementById('artist-desc').value, 
 		artist_lists = document.getElementById('artists');
-		RCApp.artists.push(name);
- 		RCApp.artist_desc.push(description);
- 		artist_lists.innerHTML += "<li>" + name + "</li>";
+		RCApp.artists.push({artist_name: name, artist_desc: description });
+ 		artist_lists.innerHTML += "<li>" + name + " " + description + "</li>";
  		//RCApp.Artist.prototype.generate_html
 },
 
@@ -93,8 +92,8 @@ RCApp.RecordLabel = function() {
 RCApp.Artist = function(name, description) {
 	this.name = name;
 	this.description = description;
-	RCApp.artists.push(this.name);
-	RCApp.artist_desc.push(this.description);
+	this.artist_object = {artist_name: name, artist_desc: description };
+	RCApp.artists.push(this.artist_object);
 };
 
 RCApp.Artist.prototype.generate_html = function() {
@@ -102,7 +101,7 @@ RCApp.Artist.prototype.generate_html = function() {
 	max = RCApp.artists.length, 
 	i = 0; 
 	for(; i < max;) {
-		artistHTML += "<li>" + RCApp.artists[i] + "</li>";
+		artistHTML += "<li>" + RCApp.artists[i].artist_name + "   "  + RCApp.artists[i].artist_desc + "</li>";
 		i += 1;
 	};
 	document.getElementById('artists').innerHTML = artistHTML;
@@ -122,6 +121,7 @@ RCApp.Album.prototype.generate_html = function() {
 new RCApp.Artist("Adele", "Britsh Songtress with an amazing voice");
 new RCApp.Artist("Mariah Carey", "Pop contemparary");
 new RCApp.Artist("Florence & the Machince", "Britsh Indie Band Turned International Sensationation ");
+
 RCApp.setButtonEvent();
 RCApp.Artist.prototype.generate_html();
 
