@@ -1,5 +1,24 @@
 var RCApp = {
 
+	submitArtistButton: document.getElementById('artist-submit'),
+
+	setSubmitArtistEvent: function() {
+		RCApp.submitArtistButton.addEventListener('click', function(event) {
+			event.preventDefault();
+			RCApp.submitArtistClick();
+		});
+	},
+
+	sumbitArtistClick: function() {
+		RCApp.addArtist();
+	},
+
+	addArtist: function() {
+		var name = document.getElementById('artist-name').value,
+		description = document.getElementById('artist-desc').value;
+		dfa.artists.push(new RCApp.Artist(name, description));
+	},
+
 	Label: function (name) {
 		this.name = name;
 		this.artists = [];
@@ -11,18 +30,6 @@ var RCApp = {
 		this.albums = [];
 	},
 
-	addArtist: function() {
-		var name = document.getElementById('artist-name').value,
-		description = document.getElementById('artist-desc').value;
-		new RCApp.Artist(name, description);
-	},
-
-	// promptArtistInfo: function() {
-	// 	var name = prompt("Artist name?"),
-	// 	description = prompt("Artist description?");
-	// 	dfa.artists.push(new RCApp.Artist(name, description));
-	// },
-
 	Album: function(name, description, genre) {
 		this.name = name;
 		this.description = description;
@@ -32,8 +39,7 @@ var RCApp = {
 };
 
 dfa = new RCApp.Label("DFA Records");
-RCApp.promptArtistInfo();
-// RCApp.promptArtistInfo();
+RCApp.setSubmitArtistEvent();
 
 // Modify the display property of the HTML elements. Alternately, there may be a hidden property. 
 
