@@ -9,7 +9,8 @@ var RCApp = {
 		});
 	},
 
-	sumbitArtistClick: function() {
+
+	submitArtistClick: function() {
 		RCApp.addArtist();
 	},
 
@@ -19,6 +20,7 @@ var RCApp = {
 		dfa.artists.push(new RCApp.Artist(name, description));
 	},
 
+	
 	Label: function (name) {
 		this.name = name;
 		this.artists = [];
