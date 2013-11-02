@@ -32,17 +32,25 @@ var RCApp = {
 		var name = document.getElementById('artist-name').value,
 		description = document.getElementById('artist-desc').value;
 		dfa.artists.push(new RCApp.Artist(name, description));
+
+	},
+
+	addArtistHtml: function() {
+		var artistList = document.getElementById('artists'),
+		name = document.getElementById('artist-name').value
+		nameHTML = "<li>" + name + "</li>";
+		artistList.innerHTML += nameHTML;
 	},
 
 	hideArtistForm: function() {
 		RCApp.artistMenu.style.display = "none";
 	},
 
-	//Click even for Submit Artist button.
+	//Click event for Submit Artist button.
 	submitArtistClick: function() {
 		RCApp.addArtist();
+		RCApp.addArtistHtml();
 		RCApp.hideArtistForm();
-
 	},
 
 	//The 3 constructors for Label, Artist and record.
