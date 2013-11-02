@@ -11,19 +11,18 @@ var RCApp = {
 	albumForm: document.getElementById('album-form'),
 
 	//-----ARTIST-----//
-	//Set up the event listener for the add artist button.
+	//Set up the event listener for the add artist, submit artist and cancel artist buttons.
 	setAddArtistEvent: function() {
 		RCApp.addArtistButton.addEventListener('click', RCApp.addArtistClick);
 	},
 
-	//Set up the Event Listener for the artist submit button.
 	setSubmitArtistEvent: function() {
 		RCApp.submitArtistButton.addEventListener('click', function(event) {
 			event.preventDefault();
 			RCApp.submitArtistClick();
 		});
 	},
-	//Set up the Event Listener for the artist cancel button.
+
 	setCancelArtistEvent: function() {
 		RCApp.cancelArtistButton.addEventListener('click', function(event) {
 			event.preventDefault();
@@ -67,8 +66,22 @@ var RCApp = {
 		RCApp.hideArtistForm();
 	},
 	//-----ALBUMS-----//
-	//Set up event listener for the add album button
+	//Set up event listeners for the add album button, submit album button and cancel album button.
+	setAddAlbumEvent: function() {
+		RCApp.addAlbumButton.addEventListener('click');
+	},
 
+	setSubmitAlbumEvent: function() {
+		RCApp.submitAlbumButton.addEventListener('click', function(event) {
+			event.preventDefault();
+		});
+	},
+
+	setCancelAlbumEvent: function() {
+		RCApp.cancelAlbumButton.addEventListener('click', function(event) {
+			event.preventDefault();
+		});
+	},
 
 	//-----CONSTRUCTORS-----//
 	//The 3 constructors for Label, Artist and record.
