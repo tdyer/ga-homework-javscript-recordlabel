@@ -98,9 +98,18 @@ var RCApp = {
 		dfa.albums.push(new RCApp.Album(name, description, genre));
 	},
 
+	addAlbumHtml: function() {
+		var albumList = document.getElementById('albums'),
+		name = document.getElementById('album-name').value
+		nameHTML = "<li id='" + name + "'>" + name + "</li>";
+		albumList.innerHTML += nameHTML;
+	},
+
 	//Define Sumbit album click functions
 	submitAlbumClick: function() {
 		RCApp.addAlbum();
+		RCApp.addAlbumHtml();
+		RCApp.hideAlbumForm();
 	},
 
 	//-----CONSTRUCTORS-----//
