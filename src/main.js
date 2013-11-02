@@ -68,7 +68,7 @@ var RCApp = {
 	//-----ALBUMS-----//
 	//Set up event listeners for the add album button, submit album button and cancel album button.
 	setAddAlbumEvent: function() {
-		RCApp.addAlbumButton.addEventListener('click');
+		RCApp.addAlbumButton.addEventListener('click', RCApp.showAlbumForm);
 	},
 
 	setSubmitAlbumEvent: function() {
@@ -81,6 +81,15 @@ var RCApp = {
 		RCApp.cancelAlbumButton.addEventListener('click', function(event) {
 			event.preventDefault();
 		});
+	},
+
+	//Set up show/hide album form functions.
+	showAlbumForm: function() {
+		RCApp.albumForm.style.display = "block";
+	},
+
+	hideAlbumForm: function() {
+		RCApp.albumForm.style.display = "none";
 	},
 
 	//-----CONSTRUCTORS-----//
@@ -106,10 +115,14 @@ var RCApp = {
 };
 
 dfa = new RCApp.Label("DFA Records");
+
+//Set artist event listeners.
 RCApp.setAddArtistEvent();
 RCApp.setSubmitArtistEvent();
 RCApp.setCancelArtistEvent();
 
-
-// Modify the display property of the HTML elements. Alternately, there may be a hidden property. 
+//Set album event listeners. 
+RCApp.setAddAlbumEvent();
+RCApp.setSubmitAlbumEvent();
+RCApp.setCancelAlbumEvent();
 
