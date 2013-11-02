@@ -38,7 +38,7 @@ var RCApp = {
 	addArtistHtml: function() {
 		var artistList = document.getElementById('artists'),
 		name = document.getElementById('artist-name').value
-		nameHTML = "<li>" + name + "</li>";
+		nameHTML = "<li id='" + name + "'>" + name + "</li>";
 		artistList.innerHTML += nameHTML;
 	},
 
