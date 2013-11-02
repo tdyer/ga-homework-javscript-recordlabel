@@ -2,8 +2,15 @@ var RCApp = {
 
 	addArtistButton: document.getElementById('add-artist'),
 	submitArtistButton: document.getElementById('artist-submit'),
-	artistMenu: document.getElementById('artist-form'),
+	cancelArtistButton: document.getElementById('artist-cancel'),
+	artistForm: document.getElementById('artist-form'),
+	
+	addAlbumButton: document.getElementById('add-album'),
+	submitAlbumButton: document.getElementById('album-submit'),
+	cancelAlbumButton: document.getElementById('album-cancel'),
+	albumForm: document.getElementById('album-form'),
 
+	//-----ARTIST-----//
 	//Set up the event listener for the add artist button.
 	setAddArtistEvent: function() {
 		RCApp.addArtistButton.addEventListener('click', RCApp.addArtistClick);
@@ -16,10 +23,17 @@ var RCApp = {
 			RCApp.submitArtistClick();
 		});
 	},
+	//Set up the Event Listener for the artist cancel button.
+	setCancelArtistEvent: function() {
+		RCApp.cancelArtistButton.addEventListener('click', function(event) {
+			event.preventDefault();
+			RCApp.hideArtistForm();
+		});
+	},
 
 	//Define all Add Artist form functions.
 	showArtistForm: function() {
-		RCApp.artistMenu.style.display = "block";
+		RCApp.artistForm.style.display = "block";
 	},
 
 	//Click event for Add Artist button. 
@@ -43,7 +57,7 @@ var RCApp = {
 	},
 
 	hideArtistForm: function() {
-		RCApp.artistMenu.style.display = "none";
+		RCApp.artistForm.style.display = "none";
 	},
 
 	//Click event for Submit Artist button.
@@ -52,9 +66,11 @@ var RCApp = {
 		RCApp.addArtistHtml();
 		RCApp.hideArtistForm();
 	},
-
+	//-----ALBUMS-----//
 	//Set up event listener for the add album button
 
+
+	//-----CONSTRUCTORS-----//
 	//The 3 constructors for Label, Artist and record.
 	Label: function (name) {
 		this.name = name;
@@ -79,6 +95,7 @@ var RCApp = {
 dfa = new RCApp.Label("DFA Records");
 RCApp.setAddArtistEvent();
 RCApp.setSubmitArtistEvent();
+RCApp.setCancelArtistEvent();
 
 
 // Modify the display property of the HTML elements. Alternately, there may be a hidden property. 
