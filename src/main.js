@@ -30,9 +30,13 @@ var RCApp = {
 		});
 	},
 
-	//Define all Add Artist form functions.
+	//Define functions to hide/show artist form. 
 	showArtistForm: function() {
 		RCApp.artistForm.style.display = "block";
+	},
+
+	hideArtistForm: function() {
+		RCApp.artistForm.style.display = "none";
 	},
 
 	//Define all Add Artist functions
@@ -50,16 +54,13 @@ var RCApp = {
 		artistList.innerHTML += nameHTML;
 	},
 
-	hideArtistForm: function() {
-		RCApp.artistForm.style.display = "none";
-	},
-
 	//Click event for Submit Artist button.
 	submitArtistClick: function() {
 		RCApp.addArtist();
 		RCApp.addArtistHtml();
 		RCApp.hideArtistForm();
 	},
+
 	//-----ALBUMS-----//
 	//Set up event listeners for the add album button, submit album button and cancel album button.
 	setAddAlbumEvent: function() {
@@ -69,13 +70,14 @@ var RCApp = {
 	setSubmitAlbumEvent: function() {
 		RCApp.submitAlbumButton.addEventListener('click', function(event) {
 			event.preventDefault();
+			RCApp.submitAlbumClick();
 		});
 	},
 
 	setCancelAlbumEvent: function() {
 		RCApp.cancelAlbumButton.addEventListener('click', function(event) {
-			RCApp.hideAlbumForm();
 			event.preventDefault();
+			RCApp.hideAlbumForm();
 		});
 	},
 
@@ -88,11 +90,25 @@ var RCApp = {
 		RCApp.albumForm.style.display = "none";
 	},
 
+	//Add album functions.
+	addAlbum: function() {
+		var name = document.getElementById('album-name').value,
+		description = document.getElementById('album-desc').value,
+		genre = document.getElementById('album-genre').value;
+		dfa.albums.push(new RCApp.Album(name, description, genre));
+	},
+
+	//Define Sumbit album click functions
+	submitAlbumClick: function() {
+		RCApp.addAlbum();
+	},
+
 	//-----CONSTRUCTORS-----//
 	//The 3 constructors for Label, Artist and record.
 	Label: function (name) {
 		this.name = name;
 		this.artists = [];
+		this.albums = [];
 	},
 
 	Artist: function(name, description) {
