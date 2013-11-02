@@ -73,10 +73,10 @@ var RCApp = {
 		var name = document.getElementById('artist-name').value,
 		description = document.getElementById('artist-desc').value, 
 		artist_lists = document.getElementById('artists');
-		artist_lists +=  name ;
 		RCApp.artists.push(name);
  		RCApp.artist_desc.push(description);
-
+ 		artist_lists.innerHTML += "<li>" + name + "</li>";
+ 		//RCApp.Artist.prototype.generate_html
 },
 
 changeArtistButtonText: function() {
