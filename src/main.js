@@ -13,7 +13,7 @@ var RCApp = {
 	//-----ARTIST-----//
 	//Set up the event listener for the add artist, submit artist and cancel artist buttons.
 	setAddArtistEvent: function() {
-		RCApp.addArtistButton.addEventListener('click', RCApp.addArtistClick);
+		RCApp.addArtistButton.addEventListener('click', RCApp.showArtistForm);
 	},
 
 	setSubmitArtistEvent: function() {
@@ -33,11 +33,6 @@ var RCApp = {
 	//Define all Add Artist form functions.
 	showArtistForm: function() {
 		RCApp.artistForm.style.display = "block";
-	},
-
-	//Click event for Add Artist button. 
-	addArtistClick: function() {
-		RCApp.showArtistForm();
 	},
 
 	//Define all Add Artist functions
