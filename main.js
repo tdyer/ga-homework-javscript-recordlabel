@@ -45,38 +45,43 @@
 
 var RCApp = {
 
-artistButton: document.getElementById('add-artist'),
-albumButton: document.getElementById('add-album'),
+	artists: [],
 
-setButtonEvent: function() {
-	RCApp.artistButton.addEventListener('click', RCApp.clickResponseArtist);
-	RCApp.albumButton.addEventListener('click', RCApp.clickResponseAlbum);
-}, 
+	artist_desc: [],
 
-clickResponseArtist: function() {
-	RCApp.addArtist();
-	RCApp.changeArtistButtonText();
+	albums: [],
 
-}, 
+	artistButton: document.getElementById('add-artist'),
+	albumButton: document.getElementById('add-album'),
 
-clickResponseAlbum: function() {
+	setButtonEvent: function() {
+		RCApp.artistButton.addEventListener('click', RCApp.clickResponseArtist);
+		RCApp.albumButton.addEventListener('click', RCApp.clickResponseAlbum);
+	}, 
 
-},
+	clickResponseArtist: function() {
+		RCApp.addArtist();
+		RCApp.changeArtistButtonText();
 
-addArtist: function() {
-	var artist_name = document.getElementById('artist-name').value,
-			artist_desc = document.getElementById('artist-desc').value, 
-			artist_lists = document.getElementById('artists');
-	artist_lists.innerHTML = artist_name + ":" + artist_desc;
+	}, 
+
+	clickResponseAlbum: function() {
+
+	},
+
+	addArtist: function() {
+		var name = document.getElementById('artist-name').value,
+		description = document.getElementById('artist-desc').value, 
+		artist_lists = document.getElementById('artists');
+		artist_lists +=  name ;
+		RCApp.artists.push(name);
+ 		RCApp.artist_desc.push(description);
+
 },
 
 changeArtistButtonText: function() {
 	RCApp.artistButton.innerHTML = 'Submit New Artist';
-},
-
-artists: [],
-
-albums: []
+}
 
 };
 
@@ -86,15 +91,25 @@ RCApp.RecordLabel = function() {
 };
 
 RCApp.Artist = function(name, description) {
-	this.name = artist_name;
-	this.description = artist_desc;
+	this.name = name;
+	this.description = description;
+	RCApp.artists.push(this.name);
+	RCApp.artist_desc.push(this.description);
 };
 
 RCApp.Artist.prototype.generate_html = function() {
-		var artists
+	artistHTML = document.getElementById('artists').innerHTML,
+	max = RCApp.artists.length, 
+	i = 0; 
+	for(; i < max;) {
+		artistHTML += "<li>" + RCApp.artists[i] + "</li>";
+		i += 1;
 	};
+	document.getElementById('artists').innerHTML = artistHTML;
 
- RCApp.Album = function(name, description) {
+};
+
+RCApp.Album = function(name, description) {
 	this.name = album_name;
 	this.description = album_desc;
 	this.artist = artist_name; //not sure about naming
@@ -104,9 +119,14 @@ RCApp.Album.prototype.generate_html = function() {
 
 };
 
-
-
+new RCApp.Artist("Adele", "Britsh Songtress with an amazing voice");
+new RCApp.Artist("Mariah Carey", "Pop contemparary");
+new RCApp.Artist("Florence & the Machince", "Britsh Indie Band Turned International Sensationation ");
 RCApp.setButtonEvent();
+RCApp.Artist.prototype.generate_html();
+
+
+
 
 
 
