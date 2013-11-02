@@ -74,6 +74,7 @@ var RCApp = {
 
 	setCancelAlbumEvent: function() {
 		RCApp.cancelAlbumButton.addEventListener('click', function(event) {
+			RCApp.hideAlbumForm();
 			event.preventDefault();
 		});
 	},
