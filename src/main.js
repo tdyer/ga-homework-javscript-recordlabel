@@ -53,6 +53,8 @@ var RCApp = {
 		RCApp.hideArtistForm();
 	},
 
+	//Set up event listener for the add album button
+
 	//The 3 constructors for Label, Artist and record.
 	Label: function (name) {
 		this.name = name;
@@ -69,6 +71,7 @@ var RCApp = {
 		this.name = name;
 		this.description = description;
 		this.genre = genre;
+		this.artists = [];
 	}
 
 };
