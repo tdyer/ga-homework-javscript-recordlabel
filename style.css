@@ -5,3 +5,11 @@
 .show {
 	display: inline;
 }
+
+.highlight {
+	background-color: red;
+}
+
+.no-highlight {
+	background-color: transparent;
+}
