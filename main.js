@@ -73,31 +73,12 @@ RCApp.create_new_album = function() {
 	RCApp.show_album_form_button.className = 'show';
 };
 
+///////////////////////
+
 RCApp.Artist = function(name, description) {
   this.name = name;
   this.description = description;
-  // this.albums = [];
-};
-
-RCApp.Artist.prototype.generateHTML = function() {
-  var html = '<li id=\'' + this.name + '\' class=\'artist-link-item\'>' + this.name + '</li>';
-  document.getElementById('artists').innerHTML += html;
-  var artist_link = document.getElementById(this.name);
-  artist_link.addEventListener('click', RCApp.displayartistinfo(artist_link, this));
-};
-
-RCApp.displayartistinfo = function(html_item, artist) {
-  var all_links = document.getElementsByClassName('artist-link-item');
-  for (var i = 0; i < all_links.length; i ++) {
-    all_links[i].className = 'no-highlight';
-  }
-  document.getElementById('desc').innerHTML=artist.description;
-  html_item.className = 'highlight';
-};
-
-RCApp.show_artist_form_button_response = function() {
-	RCApp.show_artist_form_button.className = 'hide';
-	RCApp.new_artist_form.className = 'show';
+  this.albums = [];
 };
 
 RCApp.create_new_artist = function() {
@@ -106,9 +87,60 @@ RCApp.create_new_artist = function() {
 	var new_artist = new RCApp.Artist(name, description);
 	RCApp.all_artists.push(new_artist);
 	new_artist.generateHTML();
+	new_artist.set_link_event();
 	RCApp.show_artist_form_button.className = 'show';
 	RCApp.new_artist_form.className = 'hide';
 };
+
+RCApp.Artist.prototype.generateHTML = function() {
+  var new_li = document.createElement('li');
+  new_li.innerHTML = '<a href=\"add_artist\" id=\"' + this.name + '_link\"class=\"artist-link-item\" >' + this.name + '</a>';
+  document.getElementById('artists').appendChild(new_li);
+};
+
+RCApp.Artist.prototype.set_link_event = function() {
+  var artist_link = document.getElementById(this.name + '_link');
+  var artist_object = this;
+  artist_link.addEventListener('click', function(event) {
+    event.preventDefault();
+    RCApp.highlight_artist_name(artist_link, artist_object);
+  });
+};
+
+RCApp.highlight_artist_name = function(artist_link, artist_object) {
+  var all_links = document.getElementsByClassName('artist-link-item'),
+  i = 0,
+  max = all_links.length;
+  for (; i < max; ) {
+    all_links[i].className += ' no-highlight';
+    i += 1;
+  }
+  artist_link.className = 'artist-link-item';
+  artist_link.className += ' highlight';
+  RCApp.display_artist_info(artist_object);
+};
+
+RCApp.display_artist_info = function(artist) {
+var description_div = document.getElementById('desc');
+description_div.innerHTML = '<p>' + artist.description + '</p>';
+	// if (artist.albums) {
+	//   var i = 0, max = artist.albums.length, album_list = '<ul></ul>';
+	//   for (; i < max ;) {
+	//     album_list.innerHTML += '<li>' + artist.albums[i].name + '</li>';
+	//     i += 1;
+	//   }
+	//   description_div.innerHTML += album_list;
+	// }
+};
+
+RCApp.show_artist_form_button_response = function() {
+	RCApp.show_artist_form_button.className = 'hide';
+	RCApp.new_artist_form.className = 'show';
+};
+
+
+
+/////////////////
 
 RCApp.Label = function(name) {
 	this.name = name;
