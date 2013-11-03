@@ -4,6 +4,10 @@ Medium Blue:1e3160 rgba(30,49,96,1)
 Light Blue/green: a0a98f rgba(160,169,143,1)
 Tan: bdb18d rgba(189,177,141,1)
 Elf green: 508e5b rgba(80,142,91)*/
+*{
+  margin: 0px;
+
+}
 body {
   background-color: rgba(16,25,80,1); 
   color:#000; 
@@ -14,6 +18,14 @@ body {
   width: 500px;
   height: 300px;
   margin: auto;
-  vertical-align: middle;
+  margin-top: 30px;
+  text-align: center;
+  color: rgba(189,177,141,1);
+
 }
 
+#rc-name {
+  font-weight: 100; 
+  font-size: 30px;
+  padding: 5px;
+}
