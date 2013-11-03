@@ -1,0 +1,3 @@
+  RCApp.Artist = function() {
+
+  },

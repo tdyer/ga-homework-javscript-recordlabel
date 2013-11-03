@@ -1,18 +1,9 @@
 // Application namespace
 var RCApp = {};
 
+//where RecordLabel would be
+//where Artist would be
+//where Album would be
 
-
-  RCApp.RecordLabel = function() {
-
-  },
-
-  RCApp.Artist = function() {
-
-  },
-
-  RCApp.Album = function() {
-
-  }
 
 

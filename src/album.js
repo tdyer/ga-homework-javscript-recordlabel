@@ -1,0 +1,3 @@
+  RCApp.Album = function() {
+
+  }

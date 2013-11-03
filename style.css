@@ -14,14 +14,25 @@ Elf green: 508e5b rgba(80,142,91)*/
 li {
   display: inline;
 }
+
 body {
   background-color: rgba(16,25,80,1); 
-  color:#000; 
+  color: #000; 
 }
+
 .header {
   background-color: rgba(189,177,141,1);
   color: rgba(0,0,0,.7);
 }
+
+.nav {
+
+}
+
+  .nav a:first-of-type {
+    margin-right: 30px;
+  }
+
 #record_company {
   background-color: rgba(30,49,96,1);
   width: 500px;
@@ -39,6 +50,6 @@ body {
   padding: 5px;
 }
 
-/*.secret {
+.secret {
   visibility: hidden;
-}*/
+}
