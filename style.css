@@ -4,3 +4,16 @@ Medium Blue:1e3160 rgba(30,49,96,1)
 Light Blue/green: a0a98f rgba(160,169,143,1)
 Tan: bdb18d rgba(189,177,141,1)
 Elf green: 508e5b rgba(80,142,91)*/
+body {
+  background-color: rgba(16,25,80,1); 
+  color:#000; 
+}
+
+#record_company {
+  background-color: rgba(30,49,96,1);
+  width: 500px;
+  height: 300px;
+  margin: auto;
+  vertical-align: middle;
+}
+
