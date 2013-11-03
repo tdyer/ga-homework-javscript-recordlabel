@@ -1,7 +1,7 @@
 // Application namespace
 var RCApp = {
   artists: [],
-  albums: [];
+  albums: [],
 
   render_collection: function(collection_name) {
     var i = 0,

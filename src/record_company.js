@@ -1,3 +1,2 @@
   RCApp.RecordLabel = function() {
-
-  },
+  };
