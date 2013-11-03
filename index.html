@@ -16,7 +16,6 @@
         <div>
           <label for='artist_name'> Artist Name </label>
           <input type='text' name='artist_name' id='artist_name'>
-
         </div>
         <div>
           <label for='artist_description'> Artist Description </label>
@@ -24,8 +23,19 @@
         </div>
         <input type='submit' name='artist_submit' value='Add Artist'>
       </form>
-
+      
       <ul id='artists'>
+        <h2>List of Artists</h2>
+        <li>
+          <h3>Artist1</h3>
+              <ul id='artists-album-list' class='secret'>
+                <h4>Albums:</h4>
+                  <li></li>
+                
+              </ul>
+        </li>
+
+
      </ul>
 
       <button id='add-album'>Add an Album</button>
