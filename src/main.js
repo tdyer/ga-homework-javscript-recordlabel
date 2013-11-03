@@ -5,6 +5,7 @@ var RCApp = {
   createArtistButton: document.getElementById('create-artist-button'),
   addAlbumButton: document.getElementById('add-album-button'),
   createAlbumButton: document.getElementById('create-album-button'),
+  
   labels: [],
 
   addEventListeners: function() {
@@ -73,9 +74,20 @@ var RCApp = {
     var i = 0, list = document.getElementById('artists-list'), artistsArray = RCApp.labels[0].artists; 
     list.innerHTML = "";
     for (; i < artistsArray.length;) {
-      list.innerHTML += "<li> <h4> Artist: " + artistsArray[i].name + "</h4> </li>";
+      list.innerHTML += "<li> <h4> Artist: " + artistsArray[i].name + "</h4>" + RCApp.dropDownAlbums() + "</li>";
       i += 1;
     };
+  },
+
+  dropDownAlbums: function() {
+    var i = 0, list = document.getElementById('albums-dropdown'), albumsArray = RCApp.labels[0].albums, dropDownString = "<select>"; 
+    for (; i < albumsArray.length;) {
+      var optionItem = "<option>" + albumsArray[i].title + "</option>";
+      dropDownString += optionItem
+      i += 1;
+    };
+    dropDownString += "</select>";
+    return dropDownString;
   },
 
   listAlbums: function() {
