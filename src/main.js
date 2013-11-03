@@ -1,53 +1,70 @@
 var RCApp = {
+	
+	addLabelButton: document.getElementById('add-label-button'),
+	addArtistButton: document.getElementById('add-artist-button'),
+	createArtistButton: document.getElementById('create-artist-button'),
+	labels: [],
 
-	addLabelButtonEvent: function() {
-		document.getElementById('add-label-button').addEventListener('click', function(event) {
-			var labelform = document.getElementById('add-label')
-			var name = labelform.elements[0].value;
+	addEventListeners: function() {
+		RCApp.addLabelButton.addEventListener('click', function(event) {
 			event.preventDefault();
-			new RCApp.RecordLabel(name);
-			document.getElementById('label-name').innerHTML = name;
-			labelform.style.display = 'none';
-			RCApp.addArtistButtonEvent();
+			RCApp.addLabelButtonResponse();
+		});
+
+		RCApp.addArtistButton.addEventListener('click', function(event) {
+			event.preventDefault();
+			RCApp.addArtistButtonResponse();
+		});
+
+		RCApp.createArtistButton.addEventListener('click', function(event) {
+			event.preventDefault();
+			RCApp.createArtistButtonResponse();
 		});
 	},
 
-	addArtistButtonEvent: function() {
-		var addArtistButton = document.getElementById('add-artist-button');
-		addArtistButton.style.display = 'block';
-		addArtistButton.addEventListener('click', function(event) {
-			event.preventDefault();
-			addArtistButton.style.display = 'none';
-			RCApp.createArtistButtonEvent();
-		});
+	addLabelButtonResponse: function() {
+		var labelform = document.getElementById('add-label')
+		var name = labelform.elements[0].value;
+		new RCApp.RecordLabel(name);
+		labelform.style.display = 'none';
+		RCApp.addArtistButton.style.display = 'block';
 	},
 
-	createArtistButtonEvent: function() {
+	addArtistButtonResponse: function() {
 		var artistForm = document.getElementById('add-artist-form');
-		var createArtistButton = document.getElementById('create-artist-button');
 		artistForm.style.display = 'block';
-		createArtistButton.addEventListener('click', function(event) {
-			event.preventDefault();
-			new RCApp.RecordLabel(artistForm.elements[0].value, artistForm.elements[1].value);
-			artistForm.style.display = 'none';
-			RCApp.addArtistButtonEvent();
-		});
+		RCApp.addArtistButton.style.display = 'none';
 	},
 
-	ListArtists: function() {
-		
+	createArtistButtonResponse: function() {
+		var artistForm = document.getElementById('add-artist-form');
+		new RCApp.Artist(artistForm.elements[0].value, artistForm.elements[1].value);
+		artistForm.style.display = 'none';
+		RCApp.addArtistButton.style.display = 'block';
+	},
+
+	listArtists: function() {
+		var i = 0, list = document.getElementById('artists-list'), artistsArray = RCApp.labels[0].artists; 
+		list.innerHTML = "";
+		for (; i < artistsArray.length;) {
+			list.innerHTML += "<li> <h4> Artist: " + artistsArray[i].name + "</h4> </li>";
+			i += 1;
+		};
 	},
 
 	RecordLabel: function(name) {
 		this.name = name;
-		artists: [];
+		this.artists = [];
+		this.albums = [];
+		RCApp.labels.push(this);
+		document.getElementById('label-name').innerHTML = this.name;
 	},
 
 	Artist: function(name, description) {
 		this.name = name;
 		this.description = description;
-		RCApp.RecordLabel.push(this);
-		RCApp.ListArtists();
+		RCApp.labels[0].artists.push(this);
+		RCApp.listArtists();
 	},
 
 	Album: function(title) {
@@ -57,4 +74,4 @@ var RCApp = {
 
 };
 
-RCApp.addLabelButtonEvent();
+RCApp.addEventListeners();
