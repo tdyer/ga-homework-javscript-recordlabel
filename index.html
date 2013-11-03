@@ -21,7 +21,7 @@
           <label for='artist-description'> Artist Description </label>
           <input type='text' name='artist-description' id='artist-description'>
         </div>
-        <input type='submit' name='artist_submit' value='Add Artist'>
+        <input type='submit' id='artist-submit' value='Add Artist'>
       </form>
       
       <ul id='artists'>
@@ -46,7 +46,7 @@
           <label for='album-description' id='album-description'>Description </label>
           <input type='text' name='album-description' id='album-description'>
         </div>
-        <div>
+        <div id='genre=selections'>
           <div class='single-genre-selection'>
             <label for='rock' id='album-description'>rock </label>
             <input type='checkbox' id='rock' name='genre' value="rock">
@@ -78,9 +78,10 @@
           <div class='single-genre-selection'>
             <label for='folk' id='album-description'>folk </label>
             <input type='checkbox' id='folk' name='genre' value="folk">
-          </div>
+          </div> 
    
-        </div>
+        </div> <!-- genre-selections -->
+        <input type='submit' id='album-submit' value="Add Album">
       </form>
     </div> <!-- record_company -->
 
