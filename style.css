@@ -53,3 +53,6 @@ body {
 .secret {
   visibility: hidden;
 }
+.not-secret {
+  visibility: block;
+}
