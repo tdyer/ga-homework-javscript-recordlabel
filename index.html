@@ -9,8 +9,14 @@
   </head>
   <body>
     <div id='record_company'>
-      <p id='rc-name'> Elf Records </p>
-      <p id='rc-description'> Proving the underdog rocks since 1971. </p>
+      <div class='header'>
+        <p id='rc-name'> Elf Records </p>
+        <p id='rc-description'> Proving the Underdog can Rock since 1971. </p>
+        <ul class='nav'>
+          <li><a href='#'>Artists</a></li>
+          <li><a href='#'>Albums</a></li>
+        </ul>
+      </div> <!-- header -->
       <button id='show-artist-form-button'>Add New Artist</button>
       <form id='artist-form' class='secret'>
         <div>
@@ -23,7 +29,6 @@
         </div>
         <input type='submit' id='artist-submit' value='Add Artist'>
       </form>
-      
       <ul id='artists'>
         <h2>List of Artists</h2>
         <li>
@@ -33,7 +38,6 @@
                 <h4>Albums:</h4>
                   <li></li>
               </ul>
-
         </li>
       </ul>
       <button id='show-album-form-button'>Add New Album</button>
@@ -83,6 +87,20 @@
         </div> <!-- genre-selections -->
         <input type='submit' id='album-submit' value="Add Album">
       </form>
+      <ul id='albums'>
+        <h2>List of Albums</h2>
+          <li>
+            <h3>Album1</h3>
+              <button id='show-list-of-existing-artists'>Add Album to an Artist</button>
+                <ul id='albums-artist-list' class='secret'>
+                  <h4>Albums:</h4>
+                    <li></li>
+                </ul>
+          </li>
+      </ul>
+
+     
+      <div id='display-artist-or-album-description' class='secret'></div>
     </div> <!-- record_company -->
 
     <script src='src/common.js'> </script>
