@@ -10,6 +10,7 @@ var RCApp = {
 	cancelAlbumButton: document.getElementById('album-cancel'),
 	albumForm: document.getElementById('album-form'),
 
+
 	//-----ARTIST-----//
 	//Set up the event listener for the add artist, submit artist and cancel artist buttons.
 	setAddArtistEvent: function() {
@@ -100,9 +101,16 @@ var RCApp = {
 
 	addAlbumHtml: function() {
 		var albumList = document.getElementById('albums'),
-		name = document.getElementById('album-name').value
+		name = document.getElementById('album-name').value,
 		nameHTML = "<li id='" + name + "'>" + name + "</li>";
 		albumList.innerHTML += nameHTML;
+	},
+
+	addAlbumDropdown: function() {
+		var dropdown = document.getElementById('album-dropdown'),
+		name = document.getElementById('album-name').value,
+		itemHTML = "<option value='" + name + "'>" + name + "</option>";
+		dropdown.innerHTML += itemHTML;
 	},
 
 	//Define Sumbit album click functions
@@ -110,6 +118,18 @@ var RCApp = {
 		RCApp.addAlbum();
 		RCApp.addAlbumHtml();
 		RCApp.hideAlbumForm();
+		RCApp.addAlbumDropdown();
+	},
+
+	//Define the album dropdown
+	albumDropdown: function() {
+		var i = 0,
+		max = dfa.albums.length,
+		menuML = document.getElementById('album-dropdown').innerHTML;
+		for(; i < max;) {
+			menuML += 
+			i += 1;
+		};
 	},
 
 	//-----CONSTRUCTORS-----//
@@ -136,6 +156,7 @@ var RCApp = {
 };
 
 dfa = new RCApp.Label("DFA Records");
+document.getElementById('label-name').innerHTML = dfa.name;
 
 //Set artist event listeners.
 RCApp.setAddArtistEvent();
