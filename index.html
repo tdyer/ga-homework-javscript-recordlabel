@@ -8,21 +8,31 @@
   <div id='record_company'>
     <p id='rc-name'> </p>
     <p id='rc-description'> </p>
+    <button id='add-album'>Add an Album</button>
+    <button id='add-artist'>Add an Artist</button>
+  </div>
+  <div>
     <ul id='artists'>
   
     </ul>
-    <button id='add-album'>Add an Album</button>
-    <button id='add-artist'>Add an Artist</button>
-
   </div>
-  <div id="artist-desc"></div>
+  <div> 
+    <ul id='albums'>
+      
+
+
+    </ul>
+  </div>
   <div id='desc'>
-    <div class="form" id="artist-form">
+    <div class="form" id="artist-form" class="hide">
       <form>
         Artist Name: <input type="text" id='artist-name'placeholder="Add Artist Name"><br>
         Artist Description: <input type="text" id='artist-desc' placeholder="Artist Description">
       </form>
     </div>
+    <select id="artist-list" class="hide">
+    
+    </select>
   </div>
   <script type="text/javascript" src='main.js'></script>
         </body>

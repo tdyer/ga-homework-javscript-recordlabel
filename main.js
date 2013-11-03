@@ -47,8 +47,6 @@ var RCApp = {
 
 	artists: [],
 
-	artist_desc: [],
-
 	albums: [],
 
 	artistButton: document.getElementById('add-artist'),
@@ -72,15 +70,30 @@ var RCApp = {
 	addArtist: function() {
 		var name = document.getElementById('artist-name').value,
 		description = document.getElementById('artist-desc').value, 
-		artist_lists = document.getElementById('artists');
+		artist_lists = document.getElementById('artists'); 
 		RCApp.artists.push({artist_name: name, artist_desc: description });
- 		artist_lists.innerHTML += "<li>" + name + " " + description + "</li>";
- 		//RCApp.Artist.prototype.generate_html
-},
+		artist_lists.innerHTML += "<li>" + name + "   " + description + "</li>";
+	},
 
-changeArtistButtonText: function() {
-	RCApp.artistButton.innerHTML = 'Submit New Artist';
-}
+	addAlbum: function() {
+
+	},
+	
+
+	albumsDropDown: function() {
+		max = RCApp.artists.length;
+		for (; i < max ;) {
+			var option = document.getElementById('artist-list').innerHTML;
+			option.value += "<option>" + RCApp.artists[i].artist_name + "</option>";
+			option.textContent += "<option>" + RCApp.artists[i].artist_name + "</option>";
+			i += 1;
+		}
+	},
+
+
+	changeArtistButtonText: function() {
+		RCApp.artistButton.innerHTML = 'Submit New Artist';
+	}
 
 };
 
@@ -92,38 +105,54 @@ RCApp.RecordLabel = function() {
 RCApp.Artist = function(name, description) {
 	this.name = name;
 	this.description = description;
-	this.artist_object = {artist_name: name, artist_desc: description };
+	this.artist_object = {artist_name: name, artist_desc: description , artist_albums: []};
 	RCApp.artists.push(this.artist_object);
 };
 
 RCApp.Artist.prototype.generate_html = function() {
-	artistHTML = document.getElementById('artists').innerHTML,
-	max = RCApp.artists.length, 
+	var artistHTML = document.getElementById('artists').innerHTML,
+	max = RCApp.artists.length; 
 	i = 0; 
 	for(; i < max;) {
-		artistHTML += "<li>" + RCApp.artists[i].artist_name + "   "  + RCApp.artists[i].artist_desc + "</li>";
+		artistHTML += "<li id="+ i +  ">" + RCApp.artists[i].artist_name + "   "  + RCApp.artists[i].artist_desc + "</li>";
 		i += 1;
 	};
 	document.getElementById('artists').innerHTML = artistHTML;
 
 };
 
-RCApp.Album = function(name, description) {
-	this.name = album_name;
-	this.description = album_desc;
-	this.artist = artist_name; //not sure about naming
+RCApp.Album = function(name, genre, description) {
+	this.name = name;
+	this.genre = genre; 
+	this.description = description;
+	this.album_object = {album_name: name, album_genre: genre, album_desc: description, artists_in_album: [] }
+	RCApp.albums.push(this.album_object);
 };
+
 
 RCApp.Album.prototype.generate_html = function() {
+	var albumHTML = document.getElementById('albums').innerHTML,
+	max = RCApp.albums.length; 
+	i = 0; 
+	for(; i < max;) {
+		albumHTML += "<li id="+ i +  ">" + RCApp.albums[i].album_name + "   "  + RCApp.albums[i].album_desc + "</li>";
+		i += 1;
+	};
+	document.getElementById('albums').innerHTML = albumHTML;
 
 };
 
+new RCApp.Album("Number 1s", "Pop", "Hits from 2013");
+new RCApp.Album("Lungs", "Pop-rock", "Florence and the machinces, first album");
 new RCApp.Artist("Adele", "Britsh Songtress with an amazing voice");
 new RCApp.Artist("Mariah Carey", "Pop contemparary");
 new RCApp.Artist("Florence & the Machince", "Britsh Indie Band Turned International Sensationation ");
 
 RCApp.setButtonEvent();
 RCApp.Artist.prototype.generate_html();
+RCApp.Album.prototype.generate_html();
+
+RCApp.albumsDropDown();
 
 
 
