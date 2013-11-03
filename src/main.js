@@ -10,7 +10,6 @@ var RCApp = {
 	cancelAlbumButton: document.getElementById('album-cancel'),
 	albumForm: document.getElementById('album-form'),
 
-
 	//-----ARTIST-----//
 	//Set up the event listener for the add artist, submit artist and cancel artist buttons.
 	setAddArtistEvent: function() {
@@ -51,9 +50,14 @@ var RCApp = {
 	addArtistHtml: function() {
 		var artistList = document.getElementById('artists'),
 		name = document.getElementById('artist-name').value
-		nameHTML = "<li id='" + name + "'>" + name + "</li>";
-		artistList.innerHTML += nameHTML;
+		nameHTML = "<li id='" + name + "'>" + name + "</li>",
+		buttonHTML = "<button class='add-artist-to-album' id='" + name + "-button>Add Artist to Album</button>";
+		(artistList.innerHTML + buttonHTML) += nameHTML;
 	},
+
+	// artistAlbumButton: function() {
+
+	// },
 
 	//Click event for Submit Artist button.
 	submitArtistClick: function() {
@@ -121,15 +125,23 @@ var RCApp = {
 		RCApp.addAlbumDropdown();
 	},
 
-	//Define the album dropdown
-	albumDropdown: function() {
-		var i = 0,
-		max = dfa.albums.length,
-		menuML = document.getElementById('album-dropdown').innerHTML;
-		for(; i < max;) {
-			menuML += 
-			i += 1;
-		};
+	//-----ADD ALBUM-----
+	//Define album select event listeners
+	setShowAlbums: function() {
+		document.getElementsByClassName('show-albums')[0].addEventListener('click', RCApp.showAlbumDropdown);
+	},
+
+	setHideAlbums: function() {
+		document.getElementsByClassName('hide-albums')[0].addEventListener('click', RCApp.hideAlbumDropdown);
+	},
+
+	//Define show/hide dropdown functions
+	showAlbumDropdown: function() {
+		document.getElementById('album-dropdown').style.display = "block";
+	},
+
+	hideAlbumDropdown: function() {
+		document.getElementById('album-dropdown').style.display = "none";
 	},
 
 	//-----CONSTRUCTORS-----//
@@ -167,4 +179,8 @@ RCApp.setCancelArtistEvent();
 RCApp.setAddAlbumEvent();
 RCApp.setSubmitAlbumEvent();
 RCApp.setCancelAlbumEvent();
+
+//Album dropdown event listeners.
+RCApp.setShowAlbums();
+RCApp.setHideAlbums();
 
