@@ -6,6 +6,9 @@ Tan: bdb18d rgba(189,177,141,1)
 Elf green: 508e5b rgba(80,142,91)*/
 *{
   margin: 0px;
+  list-style: none;
+  text-decoration: none;
+  font-weight: 200;
 
 }
 body {
@@ -30,6 +33,6 @@ body {
   padding: 5px;
 }
 
-.secret {
+/*.secret {
   visibility: hidden;
-}
+}*/
