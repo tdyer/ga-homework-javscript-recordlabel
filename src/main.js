@@ -13,14 +13,39 @@ var RCApp = {
     this.description = description;
     this.genre = genre;
     this.artists = [];
-  }
+  },
 
   artist: function(name, description) {
     this.name = name;
     this.description = description;
   },
 
+  artistButton: document.getElementById('add-artist'),
+  albumButton: document.getElementById('add-album'),
 
+  setButtonEvent: function() {
+    RCApp.artistButton.addEventListener('click', RCApp.promptNewArtist);
+    RCApp.albumButton.addEventListener('click', RCApp.promptNewAlbum);
+  },
+
+  promptNewAlbum: function() {
+  	var title = prompt("Enter album title:"),
+    	description = prompt("Enter album description:"),
+    	genre = prompt("Enter album genre"),
+    albums = document.getElementById("albums"),
+    albumsDesc = document.getElementById("album-desc");
+    albums.innerHTML += "<li id='title-"+title + "'>" + "<h3>" + title + "</h3>" + "</li>"
+    albumsDesc.innerHTML += "<div id='desc-" + title + "'>" + "<h4>"+ "Genre:" + "</h4>" + "<h5>"+genre +"</h5>" + "<h4>"+ "Description:" + "</h4>" + "<h5>"+description +"</h5>" + "</div>"
+  },
+
+  promptNewArtist: function() {
+    var name = prompt("Enter artist name:"),
+      description = prompt("Enter artist description:");
+    artists = document.getElementById("artists"),
+    artistDesc = document.getElementById("artist-desc");
+    artists.innerHTML += "<li id='name-"+name + "'>" + "<h3>" + name + "</h3>" + "</li>"
+    artistDesc.innerHTML += "<div id='desc-" + name + "'>" + "<h4>"+ "Description:" + "</h4>" + "<h5>"+description +"</h5>" + "</div>"
+  },
 
 // EventLab.button1 = document.getElementById('button1');
 // // All the different types of events
@@ -72,4 +97,6 @@ var RCApp = {
 
 // // registerEventHandler(EventLab.text1, "keypress", printCharacter);
 
-}
+};
+
+RCApp.setButtonEvent();
