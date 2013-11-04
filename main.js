@@ -42,39 +42,44 @@
 // At the bottom of the page should be section that will show either the
 // artist or album's description when a user clicks.
 
-
 var RCApp = {
 
 	artists: [],
 
 	albums: [],
 
-	artistButton: document.getElementById('add-artist'),
-	albumButton: document.getElementById('add-album'),
+	newArtistButton: document.getElementById('new-artist'),
+	newAlbumButton: document.getElementById('new-album'),
+	addArtistButton: document.getElementById('add-artist'),
+	addAlbumButton: document.getElementById('add-album'),
 	artistLink: document.getElementById('artists'), //might not be the correct ID
 
-	setButtonEvent: function() {
-		RCApp.artistButton.addEventListener('click', RCApp.clickResponseArtist);
-		RCApp.albumButton.addEventListener('click', RCApp.clickResponseAlbum);
+	setAllEvents: function() {
+		RCApp.newArtistButton.addEventListener('click', RCApp.clickResponseNewArtist);
+		RCApp.addArtistButton.addEventListener('click', RCApp.clickResponseAddArtist); 
+		RCApp.newAlbumButton.addEventListener('click', RCApp.clickResponseNewAlbum);
+		RCApp.addAlbumButton.addEventListener('click', RCApp.clickResponseAddAlbum);
 		RCApp.artistLink.addEventListener('click', RCApp.clickResponseArtistLink);
 	}, 
 
-
-	clickResponseArtist: function() {
-		RCApp.addArtist();
-		RCApp.changeArtistButtonText();
+	clickResponseNewArtist: function() {
 		RCApp.showArtistForm();
+	},
 
+	clickResponseAddArtist: function() {
+		RCApp.addArtist();
+	},
+
+	clickResponseNewAlbum: function() {
+		RCApp.showAlbumForm();
 	}, 
 
-	clickResponseAlbum: function() {
+	clickResponseAddAlbum: function() {
 		RCApp.addAlbum();
-		RCApp.changeAlbumButtonText();
-		RCApp.showAlbumForm();
-
 	},
 
 	clickResponseArtistLink: function() {
+		RCApp.findArtistDesc();
 		RCApp.showArtistDesc(); 
 	}, 
 
@@ -83,7 +88,7 @@ var RCApp = {
 		description = document.getElementById('artist-desc').value, 
 		artist_lists = document.getElementById('artists'); 
 		RCApp.artists.push({artist_name: name, artist_desc: description , artist_albums: []});
-		artist_lists.innerHTML += "<li>" + name + "   " + description + "</li>";
+		artist_lists.innerHTML += "<li>" + name + "</li>";
 	},
 
 	addAlbum: function() {
@@ -105,8 +110,20 @@ var RCApp = {
 	 document.getElementById('album-list').innerHTML = album_list;
 	},
 
-	showArtistDesc: function() {
-		
+	showArtistDesc: function(name) {
+	var artist_desc = document.getElementById('art_description'); 
+	artist_desc.innerHTML = "<li >" + name + "Description:" + RCApp.findArtistDesc(name); + "</li>"
+	}, 
+
+	findArtistDesc: function(name) {
+		var artist_list = RCApp.artists,
+		i =0; 
+		for (; i < artist_list.length ;) {
+			if (artist_list[i].artist_name === name ) {
+				return artist_list[i].artist_desc; 
+			};
+			i += 1;
+		};
 	}, 
 
 	showArtistForm: function() {
@@ -120,15 +137,6 @@ var RCApp = {
 		album_form.className = "form, show";
 
 	},
-
-	changeArtistButtonText: function() {
-		RCApp.artistButton.innerHTML = 'Submit New Artist';
-		}, 
-
-
-	changeAlbumButtonText: function() {
-		RCApp.albumButton.innerHTML = 'Submit New Album';
-	}, 
 
 };
 
@@ -146,15 +154,12 @@ RCApp.Artist = function(name, description) {
 
 RCApp.Artist.prototype.generate_html = function() {
 	var artistHTML = document.getElementById('artists').innerHTML,
-	descHTML = document.getElementById('artist-desc').innerHTML,		
 	max = RCApp.artists.length; 
 	i = 0; 
 	for(; i < max;) {
-		artistHTML += "<li><a href id="+ i +  "onClick=" + "\"RCApp.showArtistDesc("+ "RCApp.artists[i].artist_name" + ");\"" + ">" + RCApp.artists[i].artist_name + "</a></li>";
-		descHTML += "<li id=" + i + " " + "class=" + "\'hide\'" + ">"  + RCApp.artists[i].artist_desc + "</li>";
+		artistHTML += "<li " + " "+  "onClick=\"RCApp.showArtistDesc("+ RCApp.artists[i].artist_name  + ");\" >" + RCApp.artists[i].artist_name + "</li>";
 		i += 1;
 	};
-	document.getElementById('artist-desc').innerHTML = descHTML;
 	document.getElementById('artists').innerHTML = artistHTML;
 
 };
@@ -186,7 +191,7 @@ new RCApp.Artist("Adele", "Britsh Songtress with an amazing voice");
 new RCApp.Artist("Mariah Carey", "Pop contemparary");
 new RCApp.Artist("Florence & the Machince", "Britsh Indie Band Turned International Sensationation ");
 
-RCApp.setButtonEvent();
+RCApp.setAllEvents();
 RCApp.Artist.prototype.generate_html();
 RCApp.Album.prototype.generate_html();
 RCApp.albumsDropDown();

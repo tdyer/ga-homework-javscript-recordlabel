@@ -9,25 +9,20 @@
   <div id='record_company'>
     <p id='rc-name'> </p>
     <p id='rc-description'> </p>
-    <button id='add-album'>Add an Album</button>
-    <button id='add-artist'>Add an Artist</button>
+    <button id='new-artist'>Add New Artist</button>
+  <button id='new-album'>Add New Album</button>
   </div>
   <div>
     <ul id='artists'>
-  
     </ul>
     <div class = "desc">
-      <ul id="artist-desc"></ul>
+      <ul id="art_description"></ul>
     </div>
   </div>
   <div> 
-    <ul id='albums'>
-      
-
-
-    </ul>
+    <ul id='albums'></ul>
     <div class = "desc">
-      <ul id="album-desc"></ul>
+      <ul id="alb_description"></ul>
     </div>
   </div>
   <div class="drop-down, hide">
@@ -39,6 +34,7 @@
       <form>
         Artist Name: <input type="text" id='artist-name'placeholder="Add Artist Name"><br>
         Artist Description: <input type="text" id='artist-desc' placeholder="Artist Description">
+        <button id='add-artist'>Submit Artist</button>
       </form>
     </div>
     </br>
@@ -47,6 +43,7 @@
         Album Name: <input type="text" id='album-name'placeholder="Add Album Name"><br>
         Album Genre: <input type="text" id='album-genre' placeholder="Add Album Genre">
         Album Description: <input type="text" id='album-desc' placeholder="Add Album Description">
+         <button id='add-album'>Submit Album</button>
       </form>
     </div>
   <script type="text/javascript" src='main.js'></script>
