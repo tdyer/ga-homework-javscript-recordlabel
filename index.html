@@ -1,25 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset=utf-8 />
-    <title>Course Registration</title>
-  </head>
-  <body>
-    <div id='record_company'>
-      <p id='rc-name> </p>
-      <p id='rc-description> </p>
-      <ul id='artists'>
-     </ul>
-      <button id='add-album'>Add an Album</button>
+<head>
+  <meta charset=utf-8 />
+  <title>RCApp Record Company</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div id='record_company'>
+    <p id='rc-name'> </p>
+    <p id='rc-description'> </p>
+    <button id='new-artist'>Add New Artist</button>
+  <button id='new-album'>Add New Album</button>
+  </div>
+  <div>
+    <ul id='artists'>
+    </ul>
+    <div class = "desc">
+      <ul id="art_description"></ul>
     </div>
-    <div id='desc'>
+  </div>
+  <div> 
+    <ul id='albums'></ul>
+    <div class = "desc">
+      <ul id="alb_description"></ul>
     </div>
-
-    <script src='src/common.js'>
-    <script src='src/record_company.js'>
-    <script src='src/artist.js'>
-    <script src='src/album.js'>
-    <script src='src/main.js'>
-    </script>
-  </body>
-</html>
+  </div>
+  <div class="drop-down, hide">
+    <select id="album-list" class="hide">
+    
+    </select>
+  </div>
+   <div class="form , hide" id="artist-form" >
+      <form>
+        Artist Name: <input type="text" id='artist-name'placeholder="Add Artist Name"><br>
+        Artist Description: <input type="text" id='artist-desc' placeholder="Artist Description">
+        <button id='add-artist'>Submit Artist</button>
+      </form>
+    </div>
+    </br>
+     <div class="form , hide" id="album-form" >
+      <form>
+        Album Name: <input type="text" id='album-name'placeholder="Add Album Name"><br>
+        Album Genre: <input type="text" id='album-genre' placeholder="Add Album Genre">
+        Album Description: <input type="text" id='album-desc' placeholder="Add Album Description">
+         <button id='add-album'>Submit Album</button>
+      </form>
+    </div>
+  <script type="text/javascript" src='main.js'></script>
+        </body>
+        </html>

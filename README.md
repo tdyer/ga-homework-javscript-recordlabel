@@ -37,7 +37,7 @@ when the artist or album is created.
 All the form submit events will captured. The handlers should prevent
 the default action from being seen by the browser.
 
-When clicking on an artist name it should show it's description and a
+When clicking on an artist name it should show its description and a
 list of all the names of albums they have played on. Also, their
 background color should be changed to indicate that they have been
 selected.
