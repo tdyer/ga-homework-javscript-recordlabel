@@ -51,15 +51,13 @@ var RCApp = {
 
 	addArtistHtml: function() {
 		//Delete the current contents of the artist list.
-		document.getElementById('artists').innerHTML = "";
-		function () {
-			var artistList = document.getElementById('artists'),
-			name = document.getElementById('artist-name').value
-			nameHTML = "<li class='artist-item'id='" + name + "'>" + name
-			buttonHTML= "<button class='show-albums'>Show Albums</button>";
-			buttonHTML2 = "<button class='add-artist-to-album'>Add Artist to Album</button></li>"
-			artistList.innerHTML += nameHTML + buttonHTML + buttonHTML2;
-		};
+		//document.getElementById('artists').innerHTML = "";
+		var artistList = document.getElementById('artists'),
+		name = document.getElementById('artist-name').value,
+		nameHTML = "<li class='artist-item'id='" + name + "'>" + name,
+		buttonHTML= "<button class='show-albums'>Show Albums</button>",
+		buttonHTML2 = "<button class='add-artist-to-album' value='" + name + "'>Add Artist to Album</button></li>";
+		artistList.innerHTML += nameHTML + buttonHTML + buttonHTML2;
 	},
 
 	//Click event for Submit Artist button.
@@ -68,6 +66,7 @@ var RCApp = {
 		RCApp.addArtistHtml();
 		RCApp.hideArtistForm();
 		RCApp.setShowAlbums();
+		RCApp.setAddArtistToAlbumEvent();
 	},
 
 	//-----ALBUMS-----//
@@ -156,6 +155,43 @@ var RCApp = {
 	hideAlbumDropdown: function() {
 		document.getElementById('album-dropdown').style.display = "none";
 	},
+
+	//-----ADD ARTIST TO ALBUM-----
+	//Set up event listener for add artist to album button
+	setAddArtistToAlbumEvent: function() {
+		var	array = document.getElementsByClassName('add-artist-to-album'),
+		i = 0;
+		for (; i < array.length;) {
+			array[i].addEventListener('click', RCApp.addArtistToAlbum);
+			i += 1;
+		}; 
+	},
+
+	//Define the functionality that ads artist to album
+
+
+	addArtistToAlbum: function(e) {
+		// debugger;
+		var album_array = RCApp.findArtistDesc();
+		album_array.push(this.value);
+		// album_array.push(document.getElementById
+
+	},
+
+	findArtistDesc: function(name) {
+		var name =  document.getElementById('album-dropdown').value,
+		album_list = dfa.albums,
+		i =0; 
+		for (; i < album_list.length ;) {
+			if (album_list[i].name === name ) {
+				return album_list[i].artists; 
+			};
+			i += 1;
+		};	
+	},
+
+
+
 
 	//-----CONSTRUCTORS-----//
 	//The 3 constructors for Label, Artist and record.
