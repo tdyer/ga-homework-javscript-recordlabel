@@ -50,12 +50,16 @@ var RCApp = {
 	},
 
 	addArtistHtml: function() {
-		var artistList = document.getElementById('artists'),
-		name = document.getElementById('artist-name').value
-		nameHTML = "<li id='" + name + "'>" + name + "</li>"
-		buttonHTML= "<button class='show-albums'>Show Albums</button>";
-		buttonHTML2 = "<button class='add-artist-to-album'>Add Artist to Album</button>"
-		artistList.innerHTML += nameHTML + buttonHTML + buttonHTML2;
+		//Delete the current contents of the artist list.
+		document.getElementById('artists').innerHTML = "";
+		function () {
+			var artistList = document.getElementById('artists'),
+			name = document.getElementById('artist-name').value
+			nameHTML = "<li class='artist-item'id='" + name + "'>" + name
+			buttonHTML= "<button class='show-albums'>Show Albums</button>";
+			buttonHTML2 = "<button class='add-artist-to-album'>Add Artist to Album</button></li>"
+			artistList.innerHTML += nameHTML + buttonHTML + buttonHTML2;
+		};
 	},
 
 	//Click event for Submit Artist button.
