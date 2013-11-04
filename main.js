@@ -60,6 +60,8 @@ var RCApp = {
 	clickResponseArtist: function() {
 		RCApp.addArtist();
 		RCApp.changeArtistButtonText();
+		RCApp.showArtistForm();
+		RCApp.hideArtistForm();
 
 	}, 
 
@@ -95,6 +97,13 @@ var RCApp = {
 		};
 	 document.getElementById('album-list').innerHTML = album_list;
 	},
+
+	showArtistForm: function() {
+		var artist_form = document.getElementById('artist-form');
+		artist_form.className = "form, show";
+
+	},
+
 
 	changeArtistButtonText: function() {
 		RCApp.artistButton.innerHTML = 'Submit New Artist';
