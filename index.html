@@ -2,24 +2,46 @@
 <html>
   <head>
     <meta charset=utf-8 />
-    <title>Course Registration</title>
+    <title>RC App</title>
   </head>
   <body>
-    <div id='record_company'>
-      <p id='rc-name> </p>
-      <p id='rc-description> </p>
-      <ul id='artists'>
-     </ul>
-      <button id='add-album'>Add an Album</button>
-    </div>
-    <div id='desc'>
+    <h1 id='label-name'></h1>
+    <div id='label-info' style='display:none'>
+      <div id='label-artists'>
+        <strong>Arists:</strong>
+        <ul id='artists-list' style='display:none'>
+        </ul>
+      </div>
+
+    <div id='biodiv' style='display:none'></div>
+
+      <strong>Albums:</strong>
+      <div id='label-albums'>
+        <ul id='albums-list'>
+        </ul>
+      </div>
     </div>
 
-    <script src='src/common.js'>
-    <script src='src/record_company.js'>
-    <script src='src/artist.js'>
-    <script src='src/album.js'>
-    <script src='src/main.js'>
-    </script>
+    <form id='add-label' style="display:block;">
+      <input type='text' />
+      <button id='add-label-button'>Add a label</button>
+    </form>
+
+    <button id='add-artist-button' style="display:none">Add an Arist</button>
+    <form id='add-artist-form' style="display:none;">
+      Artist Name: <input type='text' /><br />
+      Description: <textarea></textarea><br />
+      <button id='create-artist-button'>Add this Artist</button>
+    </form>
+
+    <button id='add-album-button' style="display:none">Add an Album</button>
+    <form id='add-album-form' style="display:none;">
+      Album Name: <input type='text' /><br />
+      Description: <textarea></textarea><br />
+      Genre: <input type='text' /><br />
+      <button id='create-album-button'>Add this Album</button>
+    </form>
+
+    <script src='src/main.js'></script>
   </body>
 </html>
