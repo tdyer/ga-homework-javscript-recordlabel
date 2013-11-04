@@ -64,6 +64,7 @@ var RCApp = {
 	}, 
 
 	clickResponseAlbum: function() {
+		RCApp.addAlbum();
 
 	},
 
@@ -71,25 +72,28 @@ var RCApp = {
 		var name = document.getElementById('artist-name').value,
 		description = document.getElementById('artist-desc').value, 
 		artist_lists = document.getElementById('artists'); 
-		RCApp.artists.push({artist_name: name, artist_desc: description });
+		RCApp.artists.push({artist_name: name, artist_desc: description , artist_albums: []});
 		artist_lists.innerHTML += "<li>" + name + "   " + description + "</li>";
 	},
 
 	addAlbum: function() {
-
+		var name = document.getElementById('album-name').value,
+		genre = document.getElementById('album-genre').value,
+		description = document.getElementById('album-desc').value, 
+		album_lists = document.getElementById('albums'); 
+		RCApp.albums.push({album_name: name, album_genre: genre,  album_desc: description , artists_in_album: []});
+		album_lists.innerHTML += "<li>" + name + "   " + genre + " " + description + "</li>";
 	},
-	
 
 	albumsDropDown: function() {
-		max = RCApp.artists.length;
-		for (; i < max ;) {
-			var option = document.getElementById('artist-list').innerHTML;
-			option.value += "<option>" + RCApp.artists[i].artist_name + "</option>";
-			option.textContent += "<option>" + RCApp.artists[i].artist_name + "</option>";
+		var album_list = document.getElementById('album-list').innerHTML, albums_array = RCApp.albums; 
+		i=0;
+		for (; i < albums_array.length;) {
+			album_list += "<option>" + albums_array[i].album_name + "</option>";
 			i += 1;
-		}
+		};
+	 document.getElementById('album-list').innerHTML = album_list;
 	},
-
 
 	changeArtistButtonText: function() {
 		RCApp.artistButton.innerHTML = 'Submit New Artist';
@@ -125,7 +129,7 @@ RCApp.Album = function(name, genre, description) {
 	this.name = name;
 	this.genre = genre; 
 	this.description = description;
-	this.album_object = {album_name: name, album_genre: genre, album_desc: description, artists_in_album: [] }
+	this.album_object = {album_name: name, album_genre: genre, album_desc: description, artists_in_album: [] };
 	RCApp.albums.push(this.album_object);
 };
 
