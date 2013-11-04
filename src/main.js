@@ -1,7 +1,13 @@
 // namespace for our application
-var EventLab = EventLab || {};
+var RCApp = RCApp || {};
 
-EventLab.button1 = document.getElementById('button1');
+  var recordLabel;
+  recordLabel = new RCApp.RecordLabel("Atlantic", "Atlantic Record Label");
+//recordLabel.hideNewArtistForm();
+//recordLabel.hideNewAlbumForm();
+
+
+//EventLab.button1 = document.getElementById('button1');
 // All the different types of events
 // https://developer.mozilla.org/en-US/docs/Web/Reference/Events#Standard_events
 // http://www.w3.org/TR/DOM-Level-3-Events/#event-interfaces
@@ -28,7 +34,7 @@ EventLab.button1 = document.getElementById('button1');
 // http://www.w3.org/TR/DOM-Level-3-Events/#event-flow
 // Every click event on any element in the document will be 
 // "bubbled up" to the document
- EventLab.body = document.getElementsByTagName('body')[0];
+ //EventLab.body = document.getElementsByTagName('body')[0];
 // registerEventHandler(EventLab.body, "click", reportClick);
 
 // 4.1) Stop the event from bubbling up to parent elements in the 
@@ -45,7 +51,7 @@ EventLab.button1 = document.getElementById('button1');
 
 // 7) Register a handler for the text box keydown/up and keypress events.
 
-EventLab.text1 = document.getElementById('text1');
+//EventLab.text1 = document.getElementById('text1');
 //registerEventHandler(EventLab.text1, "keydown", printKeyCode);
 // unregisterEventHandler(EventLab.text1, "keydown", printKeyCode);
 
