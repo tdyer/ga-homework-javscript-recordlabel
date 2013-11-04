@@ -107,12 +107,12 @@ var RCApp = {
 			album_list += "<option>" + albums_array[i].album_name + "</option>";
 			i += 1;
 		};
-	 document.getElementById('album-list').innerHTML = album_list;
+		document.getElementById('album-list').innerHTML = album_list;
 	},
 
 	showArtistDesc: function(name) {
-	var artist_desc = document.getElementById('art_description'); 
-	artist_desc.innerHTML = "<li >" + name + "Description:" + RCApp.findArtistDesc(name); + "</li>"
+		var artist_desc = document.getElementById('art_description'); 
+		artist_desc.innerHTML = "<li >" + name + "Description:" + RCApp.findArtistDesc(name); + "</li>"
 	}, 
 
 	findArtistDesc: function(name) {
@@ -135,7 +135,6 @@ var RCApp = {
 	showAlbumForm: function() {
 		var album_form = document.getElementById('album-form');
 		album_form.className = "form, show";
-
 	},
 
 };
@@ -150,6 +149,7 @@ RCApp.Artist = function(name, description) {
 	this.description = description;
 	this.artist_object = {artist_name: name, artist_desc: description , artist_albums: []};
 	RCApp.artists.push(this.artist_object);
+
 };
 
 RCApp.Artist.prototype.generate_html = function() {
@@ -157,7 +157,7 @@ RCApp.Artist.prototype.generate_html = function() {
 	max = RCApp.artists.length; 
 	i = 0; 
 	for(; i < max;) {
-		artistHTML += "<li " + " "+  "onClick=\"RCApp.showArtistDesc("+ RCApp.artists[i].artist_name  + ");\" >" + RCApp.artists[i].artist_name + "</li>";
+		artistHTML += "<li " + " "+  "onClick="+ "\"RCApp.showArtistDesc("+ RCApp.artists[i].artist_name  + ") >" + RCApp.artists[i].artist_name + "</li>";
 		i += 1;
 	};
 	document.getElementById('artists').innerHTML = artistHTML;
