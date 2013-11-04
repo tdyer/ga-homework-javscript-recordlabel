@@ -6,10 +6,20 @@
   </head>
   <body>
     <h1 id='label-name'></h1>
+    <div id='label-info' style='display:none'>
+      <div id='label-artists'>
+        <strong>Arists:</strong>
+        <ul id='artists-list' style='display:none'>
+        </ul>
+      </div>
 
-    <div id='label-artists'>
-      <ul id='artists-list'>
-      </ul>
+    <div id='biodiv' style='display:none'></div>
+
+      <strong>Albums:</strong>
+      <div id='label-albums'>
+        <ul id='albums-list'>
+        </ul>
+      </div>
     </div>
 
     <form id='add-label' style="display:block;">
@@ -22,6 +32,14 @@
       Artist Name: <input type='text' /><br />
       Description: <textarea></textarea><br />
       <button id='create-artist-button'>Add this Artist</button>
+    </form>
+
+    <button id='add-album-button' style="display:none">Add an Album</button>
+    <form id='add-album-form' style="display:none;">
+      Album Name: <input type='text' /><br />
+      Description: <textarea></textarea><br />
+      Genre: <input type='text' /><br />
+      <button id='create-album-button'>Add this Album</button>
     </form>
 
     <script src='src/main.js'></script>
