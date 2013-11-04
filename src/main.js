@@ -2,7 +2,7 @@
 // var EventLab = EventLab || {};
 var RCApp = {
 
-	recordLabel: function(name) {
+	recordCompany: function(name) {
    this.name = name;
    this.artists = [];
    this.albums = [];   
