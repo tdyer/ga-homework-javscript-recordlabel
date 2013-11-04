@@ -54,7 +54,8 @@ var RCApp = {
 		name = document.getElementById('artist-name').value
 		nameHTML = "<li id='" + name + "'>" + name + "</li>"
 		buttonHTML= "<button class='show-albums'>Show Albums</button>";
-		artistList.innerHTML += nameHTML + buttonHTML;
+		buttonHTML2 = "<button class='add-artist-to-album'>Add Artist to Album</button>"
+		artistList.innerHTML += nameHTML + buttonHTML + buttonHTML2;
 	},
 
 	//Click event for Submit Artist button.
