@@ -1,4 +1,15 @@
 # Javascript Record Company
+TO DO:
+-namespace
+-constructor method for each
+-generate html for label, artist, album
+
+-record label: add artist button reveals hidden form with name, description.
+-artists: list all artists, update with new artists added from form
+-"add artist to album" button next to each artist -in generated html,  has drop down/select to select album to play on
+-album: add album button- name, genre, description form (like add artist)
+-clicking on artist shows hidden description, changes background color
+-div at bottom of page to show artist/album description depending on what's clicked
 
 ## Assignment
 

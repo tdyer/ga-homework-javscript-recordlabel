@@ -1,52 +1,80 @@
-// namespace for our application
-var EventLab = EventLab || {};
+// Application namespace
+var RCApp = {
 
-EventLab.button1 = document.getElementById('button1');
-// All the different types of events
-// https://developer.mozilla.org/en-US/docs/Web/Reference/Events#Standard_events
-// http://www.w3.org/TR/DOM-Level-3-Events/#event-interfaces
+  showArtistFormButton: document.getElementById('add-artist'),
+  showAlbumFormButton: document.getElementById('add-album'),
+  showLabelFormButton: document.getElementById('add-label'),
 
-// 0) Show the inline event handler in the index.html
+  addArtisttoAlbum: document.getElementById('add-artist-album'),
 
-// 1) Simple event handler
-//EventLab.button1.addEventListener('click', function(){
-// 	alert('You clicked the button');
-// });
+  artistFormButton: document.getElementById('new-artist'),
+  albumFormButton:document.getElementById('new-album'),
 
-// 2) Abstract out the 2 ways to catch/handle an event
-// register button1 click handler.
-// registerEventHandler(button1, "click", showEvent);
+  setButtonEvent: function() {
+    RCApp.showArtistFormButton.addEventListener('click', RCApp.clickArtistResponse);
+    RCApp.showAlbumFormButton.addEventListener('click', RCApp.clickAlbumResponse);
+    RCApp.showLabelFormButton.addEventListener('click', RCApp.clickLabelResponse);
 
-// 3) Capture other events sent when clicking on the button.	
-// Note the order of the events sent/generated.
-// registerEventHandler(button1, "dblclick", showEvent);
-// registerEventHandler(button1, "mousedown", showEvent);
-// registerEventHandler(button1, "mouseup", showEvent);
+    RCApp.addArtisttoAlbum.addEventListener('click', function() {
+      event.preventDefault();
+      // call next function
+    });
 
-// 4) Show how events are 'bubbled up' to parent document elements.
-// register a handler on the whole document.
-// http://www.w3.org/TR/DOM-Level-3-Events/#event-flow
-// Every click event on any element in the document will be 
-// "bubbled up" to the document
- EventLab.body = document.getElementsByTagName('body')[0];
-// registerEventHandler(EventLab.body, "click", reportClick);
+    RCApp.artistFormButton.addEventListener('click', function(){
+      event.preventDefault();
+      // function
+    });
 
-// 4.1) Stop the event from bubbling up to parent elements in the 
-// DOM
- // registerEventHandler(EventLab.button1, "click", showEvent);
- // registerEventHandler(EventLab.button1, "click", stopEvent);
- // registerEventHandler(EventLab.body, "click", reportClick);
+    RCApp.albumFormButton.addEventListener('click', function (){
+      event.preventDefault();
+      // function
+    });
+  },
 
-// 5) Generate an event in the chrome inspector/debugger.
-// document.getElementById('button1').click();
+  clickArtistResponse: function() {
+    RCApp.addArtist(name, description);
+  },
 
-// 6) Unregister event.
-// unregisterEventHandler(document, "click", reportClick);
+  addArtist: function(name, description) {
+    var albums = [],
+    all_artists = document.getElementById('artists'),
+    name= "<li><p>Artist: " + name + "</p>",
+    description = "Description: " + description + "</li>";
 
-// 7) Register a handler for the text box keydown/up and keypress events.
+  all_artists.innerHTML = name + description;
+  },
 
-EventLab.text1 = document.getElementById('text1');
-//registerEventHandler(EventLab.text1, "keydown", printKeyCode);
-// unregisterEventHandler(EventLab.text1, "keydown", printKeyCode);
+  clickAlbumResponse: function() {
+    RCApp.showAlbumFormButton.className = 'show';
+    RCApp.addAlbum.className = 'show';
+    RCApp.addAlbum(name, description, genre);
+  },
 
-// registerEventHandler(EventLab.text1, "keypress", printCharacter);
+  addAlbum: function(name, description, genre) {
+    var artists = [],
+    all_albums = document.getElementById('albums'),
+    name ="<li><p>Album: " + name + "</p>",
+    description = "<p>Description: " + description + "</p>",
+    genre = "<p>Genre: " + genre + "</p></li>";
+    all_albums.innerHTML = name + description + genre;
+  },
+
+  clickLabelResponse: function() {
+    var form = document.getElementById('label-form')
+    form.style = "display:block;"
+    RCApp.addLabel();
+  },
+
+  addLabel: function(name, description) {
+    var artists = [],
+    albums = [],
+      labelName = document.getElementById('rc-name'),
+      labelDescription = document.getElementById('rc-description');
+  },
+
+  clickArtistAlbumResponse: function () {
+  }
+
+};
+
+RCApp.setButtonEvent();
