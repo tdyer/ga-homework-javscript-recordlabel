@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset=utf-8 />
-    <title>Course Registration</title>
-  </head>
-  <body>
-    <div id='record_company'>
-      <p id='rc-name> </p>
-      <p id='rc-description> </p>
-      <ul id='artists'>
-     </ul>
-      <button id='add-album'>Add an Album</button>
-    </div>
-    <div id='desc'>
-    </div>
-
-    <script src='src/common.js'>
-    <script src='src/record_company.js'>
-    <script src='src/artist.js'>
-    <script src='src/album.js'>
-    <script src='src/main.js'>
-    </script>
+<head>
+  <meta charset=utf-8 />
+  <title>Course Registration</title>
+</head>
+<body>
+  <div id='record_company'>
+    <p id='rc-name> </p>
+    <p id='rc-description> </p>
+  </div>
+  <ul id='artists'>
+  </ul>
+  <button id='add-artist'></button>
+  <form id='add-artist-form' class='hide'>
+    Name: <input type='text' id='add-artist-name'></input>
+    Description: <input type='textarea' id='add-artist-desc'></input>
+  </form>
+  <ul id='albums'>
+  </ul>
+  <button id='add-album'></button>
+  <form id='add-album-form' class='hide'>
+    Name: <input type='text' id='add-album-name'></input>
+    Description: <input type='textarea' id='add-album-desc'></input>
+  </form>
+  <footer>
+    <div id='record_company_text'></div>
+  </footer>  
+  <script src='src/common.js'/>
+  <script src='src/record_company.js'/>
+  <script src='src/artist.js'/>
+  <script src='src/album.js'/>
+  <script src='src/main.js/'>
   </body>
-</html>
+  </html>
