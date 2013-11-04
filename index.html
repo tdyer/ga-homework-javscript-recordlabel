@@ -6,27 +6,28 @@
 </head>
 <body>
   <div id='record_company'>
+
     <p id='rc-name>' </p>
     <p id='rc-description'> </p>
     <ul id='artists'>
     </ul>
     <button id='add-album'>Add an Album</button>
-    <form id='album-form' style='display: none;'>
+    <form id='album-form' class='hide'>
       Album Name:<input id='album-name' type='text' name='name'></br>
-      Description:<input id='album-desc' type='text' name='description'></br>
+      Description:<input id='album-desc' type='textarea' name='description'></br>
       Genre:<input id='album-genre' type='text' name='genre'></br>
       <input id='album-submit-button' type='submit' value='Submit'>
     </form>
-
+    
   </div>
   <div id='desc'>
   </div>
 
   <script src='src/common.js',
+  src='main.js',
+  src='src/album.js',
   src='src/record_company.js',
-  src='src/artist.js',
-  <script src='src/album.js',
-  <script src='main.js',
+  src='src/artist.js'>
 </script>
 </body>
 </html>

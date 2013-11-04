@@ -16,13 +16,13 @@ RCApp.RecordLabel = function() {
 // id='artists'
 // id='desc'
 
-addAlbumButton: document.getElementById('add-album'),
-  // addRecordCompanyButton: document.getElementById('record_company'),
+  	addAlbumButton: document.getElementById('add-album'),
+		albumForm: document.getElementById('album-form'),
+    albumFormSubmitButton: document.getElementById('album-submit-button'),
+// addRecordCompanyButton: document.getElementById('record_company'),
   // addArtistButton: document.getElementById('add-artist'),
 
   // artistForm: document.getElementById('artist-form'),
-  albumForm: document.getElementById('album-form'),
-  albumFormSubmitButton: document.getElementById('album-submit-button'),
   // artistFormSubmitButton: document.getElementById('artist-submit-button')
 
   // albums: document.getElementById('albums'),
