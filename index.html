@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset=utf-8 />
-    <title>Course Registration</title>
-  </head>
-  <body>
-    <div id='record_company'>
-      <p id='rc-name> </p>
-      <p id='rc-description> </p>
-      <ul id='artists'>
-     </ul>
-      <button id='add-album'>Add an Album</button>
-    </div>
-    <div id='desc'>
-    </div>
+<head>
+  <meta charset=utf-8 />
+  <title>Record Company</title>
+</head>
+<body>
+  <div id='record_company'>
+    <p id='rc-name>' </p>
+    <p id='rc-description'> </p>
+    <ul id='artists'>
+    </ul>
+    <button id='add-album'>Add an Album</button>
+    <form id='album-form' style='display: none;'>
+      Album Name:<input id='album-name' type='text' name='name'></br>
+      Description:<input id='album-desc' type='text' name='description'></br>
+      Genre:<input id='album-genre' type='text' name='genre'></br>
+      <input id='album-submit-button' type='submit' value='Submit'>
+    </form>
 
-    <script src='src/common.js'>
-    <script src='src/record_company.js'>
-    <script src='src/artist.js'>
-    <script src='src/album.js'>
-    <script src='src/main.js'>
-    </script>
-  </body>
+  </div>
+  <div id='desc'>
+  </div>
+
+  <script src='src/common.js',
+  src='src/record_company.js',
+  src='src/artist.js',
+  <script src='src/album.js',
+  <script src='main.js',
+</script>
+</body>
 </html>
