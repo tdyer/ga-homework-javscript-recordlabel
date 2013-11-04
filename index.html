@@ -1,25 +1,118 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <meta charset=utf-8 />
-    <title>Course Registration</title>
+    <title>Elf Records</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="normalize.css">
   </head>
   <body>
     <div id='record_company'>
-      <p id='rc-name> </p>
-      <p id='rc-description> </p>
-      <ul id='artists'>
-     </ul>
-      <button id='add-album'>Add an Album</button>
-    </div>
-    <div id='desc'>
-    </div>
+      <div class='header'>
+        <p id='rc-name'> Elf Records </p>
+        <p id='rc-description'> Proving the Underdog can Rock since 1971. </p>
+        <ul class='nav'>
+          <li><a onClick='RCApp.show_artist_list();return false;'>Artists</a></li>
+          <li><a onClick='RCApp.show_album_list();return false;'>Albums</a></li>
+        </ul>
+      </div> <!-- header -->
+      <button id='add-artist' class='secret' onClick='RCApp.add_artist();return false;'>Add New Artist</button>
+      <form id='artist-form' class='secret'>
+        <div>
+          <label for='artist-name'> Artist Name </label>
+          <input type='text' name='artist-name' id='artist-name'>
+        </div>
+        <div>
+          <label for='artist-description'> Artist Description </label>
+          <input type='text' name='artist-description' id='artist-description'>
+        </div>
+        <input type='submit' id='artist-submit' value='Add Artist'>
+      </form>
+      
+      <ul id='artists' class='secret'>
+        <h2>List of Artists</h2>
+        <li>
+          <h3>Artist1</h3>
+            <button id='show-list-of-existing-albums'>Add Artist to an Album</button>
+              <ul id='artists-album-list' class='secret'>
+                <h4>Albums:</h4>
+                  <li></li>
+              </ul>
+        </li>
 
-    <script src='src/common.js'>
-    <script src='src/record_company.js'>
-    <script src='src/artist.js'>
-    <script src='src/album.js'>
-    <script src='src/main.js'>
-    </script>
+      </ul>
+      <button id='add-album' class='secret' onClick='RCApp.add_album();return false;'>Add New Album</button>
+      <form id='album-form' class='secret'>
+        <div>
+          <label for='album-title'>Title </label>
+          <input type='text' name='album-title' id='album-title'>
+        </div>
+        <div>
+          <label for='album-description' id='album-description'>Description </label>
+          <input type='text' name='album-description' id='album-description'>
+        </div>
+        <div id='genre=selections'>
+          <div class='single-genre-selection'>
+            <label for='rock' id='album-description'>rock </label>
+            <input type='checkbox' id='rock' name='genre' value="rock">
+          </div>
+          <div class='single-genre-selection'>
+            <label for='pop' id='album-description'>pop </label>
+            <input type='checkbox' id='pop' name='genre' value="pop">
+          </div>
+          <div class='single-genre-selection'>
+            <label for='electronic' id='album-description'>electronic </label>
+            <input type='checkbox' id='electronic' name='genre' value="electronic">
+          </div>
+          <div class='single-genre-selection'>
+            <label for='dubstep' id='album-description'>dubstep </label>
+            <input type='checkbox' id='dubstep' name='genre' value="dubstep">
+          </div>
+           <div class='single-genre-selection'>
+            <label for='rap' id='album-description'>rap </label>
+            <input type='checkbox' id='rap' name='genre' value="rap">
+          </div>
+          <div class='single-genre-selection'>
+            <label for='classical' id='album-description'>classical </label>
+            <input type='checkbox' id='classical' name='genre' value="classical">
+          </div>
+          <div class='single-genre-selection'>
+            <label for='country' id='album-description'>country </label>
+            <input type='checkbox' id='country' name='genre' value="country">
+          </div>
+          <div class='single-genre-selection'>
+            <label for='folk' id='album-description'>folk </label>
+            <input type='checkbox' id='folk' name='genre' value="folk">
+          </div> 
+   
+        </div> <!-- genre-selections -->
+        <input type='submit' id='album-submit' value="Add Album">
+      </form>
+      
+      <ul id='albums' class='secret'>
+        <h2>List of Albums</h2>
+          <li>
+            <h3>Album1</h3>
+              <button id='show-list-of-existing-artists'>Add Album to an Artist</button>
+                <ul id='albums-artist-list' class='secret'>
+                  <h4>Albums:</h4>
+                    <li></li>
+                </ul>
+          </li>
+
+      </ul>
+
+     
+      <div id='display-artist-or-album-description' class='secret'></div>
+    </div> <!-- record_company -->
+
+    <script src='src/common.js'> </script>
+    <script src='src/record_company.js'></script>
+    <script src='src/artist.js'></script>
+    <script src='src/album.js'></script>
+    <script src='src/main_setup.js'></script>
+    <script src='src/main.js'></script>
+
   </body>
 </html>

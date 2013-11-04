@@ -1,52 +1,72 @@
-// namespace for our application
-var EventLab = EventLab || {};
+// Application namespace
+var RCApp = {
+  artists: [],
+  albums: [],
 
-EventLab.button1 = document.getElementById('button1');
-// All the different types of events
-// https://developer.mozilla.org/en-US/docs/Web/Reference/Events#Standard_events
-// http://www.w3.org/TR/DOM-Level-3-Events/#event-interfaces
 
-// 0) Show the inline event handler in the index.html
+  // render_collection: function(collection_name) {
+  //   var i = 0,
+  //       array_length;
+ 
+  //   array_length = this[collection_name].length
+  //   for(;i<array_length;) {
+  //     this[collection_name][i].render_item(collection_name);
+  //     i = i + 1;
+  //   };
+  // }
 
-// 1) Simple event handler
-//EventLab.button1.addEventListener('click', function(){
-// 	alert('You clicked the button');
-// });
 
-// 2) Abstract out the 2 ways to catch/handle an event
-// register button1 click handler.
-// registerEventHandler(button1, "click", showEvent);
+//where RecordLabel would be
+//where Artist would be
+//where Album would be
 
-// 3) Capture other events sent when clicking on the button.	
-// Note the order of the events sent/generated.
-// registerEventHandler(button1, "dblclick", showEvent);
-// registerEventHandler(button1, "mousedown", showEvent);
-// registerEventHandler(button1, "mouseup", showEvent);
+  show_artist_list: function(e){
+    var alist = document.getElementById('artists');
+     if (alist.className ==='not_secret')
+      alist.className = 'secret';
+    else
+      alist.className = 'not_secret';
+  },
 
-// 4) Show how events are 'bubbled up' to parent document elements.
-// register a handler on the whole document.
-// http://www.w3.org/TR/DOM-Level-3-Events/#event-flow
-// Every click event on any element in the document will be 
-// "bubbled up" to the document
- EventLab.body = document.getElementsByTagName('body')[0];
-// registerEventHandler(EventLab.body, "click", reportClick);
+   show_album_list: function(e){
+    var alist = document.getElementById('albums');
+     if (alist.className ==='not_secret')
+      alist.className = 'secret';
+    else
+      alist.className = 'not_secret';
+  },
 
-// 4.1) Stop the event from bubbling up to parent elements in the 
-// DOM
- // registerEventHandler(EventLab.button1, "click", showEvent);
- // registerEventHandler(EventLab.button1, "click", stopEvent);
- // registerEventHandler(EventLab.body, "click", reportClick);
+  add_artist: function(e){
+    var artist_name = "", artist,
+    form = document.getElementById('artist-form');
+    if (form.className ==='not_secret')
+        form.className = 'secret';
+    else
+        form.className = 'not_secret'; 
 
-// 5) Generate an event in the chrome inspector/debugger.
-// document.getElementById('button1').click();
+  },
 
-// 6) Unregister event.
-// unregisterEventHandler(document, "click", reportClick);
+  
+  add_album: function(e){
+  var album_name = "", album,
+  form = document.getElementById('album-form');
+  if (form.className ==='not_secret')
+      form.className = 'secret';
+  else
+  form.className = 'not_secret';
+  }
 
-// 7) Register a handler for the text box keydown/up and keypress events.
 
-EventLab.text1 = document.getElementById('text1');
-//registerEventHandler(EventLab.text1, "keydown", printKeyCode);
-// unregisterEventHandler(EventLab.text1, "keydown", printKeyCode);
 
-// registerEventHandler(EventLab.text1, "keypress", printCharacter);
+
+  // artist_name = prompt("Name of Artist");
+  // console.log("artist_name");
+  // artist = new RCApp.Artist(artist_name);
+  // CourseApp.artists.push(artist);
+  // artist.render_item("artists");
+
+  // Prompt the user for information to add a teacher
+  // Append this teacher to the list of teachers on the page
+
+
+};
