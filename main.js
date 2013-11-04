@@ -51,11 +51,14 @@ var RCApp = {
 
 	artistButton: document.getElementById('add-artist'),
 	albumButton: document.getElementById('add-album'),
+	artistLink: document.getElementById('artists'), //might not be the correct ID
 
 	setButtonEvent: function() {
 		RCApp.artistButton.addEventListener('click', RCApp.clickResponseArtist);
 		RCApp.albumButton.addEventListener('click', RCApp.clickResponseAlbum);
+		RCApp.artistLink.addEventListener('click', RCApp.clickResponseArtistLink);
 	}, 
+
 
 	clickResponseArtist: function() {
 		RCApp.addArtist();
@@ -70,6 +73,10 @@ var RCApp = {
 		RCApp.showAlbumForm();
 
 	},
+
+	clickResponseArtistLink: function() {
+		RCApp.showArtistDesc(); 
+	}, 
 
 	addArtist: function() {
 		var name = document.getElementById('artist-name').value,
@@ -97,6 +104,10 @@ var RCApp = {
 		};
 	 document.getElementById('album-list').innerHTML = album_list;
 	},
+
+	showArtistDesc: function() {
+		
+	}, 
 
 	showArtistForm: function() {
 		var artist_form = document.getElementById('artist-form');
@@ -139,7 +150,7 @@ RCApp.Artist.prototype.generate_html = function() {
 	max = RCApp.artists.length; 
 	i = 0; 
 	for(; i < max;) {
-		artistHTML += "<li id="+ i +  ">" + RCApp.artists[i].artist_name + "</li>";
+		artistHTML += "<li><a href id="+ i +  "onClick=" + "\"RCApp.showArtistDesc("+ "RCApp.artists[i].artist_name" + ");\"" + ">" + RCApp.artists[i].artist_name + "</a></li>";
 		descHTML += "<li id=" + i + " " + "class=" + "\'hide\'" + ">"  + RCApp.artists[i].artist_desc + "</li>";
 		i += 1;
 	};
