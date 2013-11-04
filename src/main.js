@@ -23,8 +23,26 @@ var RCApp = {
   add_artist: function(e){
   var artist_name = "", artist,
   form = document.getElementById('artist-form');
-  form.className = 'not_secret';
+  if (form.className ==='not_secret')
+      form.className = 'secret';
+  else
+  form.className = 'not_secret'; 
+
+  },
+
   
+  add_album: function(e){
+  var album_name = "", album,
+  form = document.getElementById('album-form');
+  if (form.className ==='not_secret')
+      form.className = 'secret';
+  else
+  form.className = 'not_secret';
+  }
+
+
+
+
   // artist_name = prompt("Name of Artist");
   // console.log("artist_name");
   // artist = new RCApp.Artist(artist_name);
@@ -33,6 +51,6 @@ var RCApp = {
 
   // Prompt the user for information to add a teacher
   // Append this teacher to the list of teachers on the page
-}
+
 
 };
