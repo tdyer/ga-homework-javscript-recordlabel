@@ -65,6 +65,7 @@ var RCApp = {
 
 	clickResponseAlbum: function() {
 		RCApp.addAlbum();
+		RCApp.changeAlbumButtonText();
 
 	},
 
@@ -97,7 +98,12 @@ var RCApp = {
 
 	changeArtistButtonText: function() {
 		RCApp.artistButton.innerHTML = 'Submit New Artist';
-	}
+		}, 
+
+
+	changeAlbumButtonText: function() {
+		RCApp.albumButton.innerHTML = 'Submit New Album';
+	}, 
 
 };
 
