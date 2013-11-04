@@ -33,6 +33,8 @@ var RCApp = {
 	//Define functions to hide/show artist form. 
 	showArtistForm: function() {
 		RCApp.artistForm.style.display = "block";
+		document.getElementById('artist-name').value = "";
+		document.getElementById('artist-desc').value = "";
 	},
 
 	hideArtistForm: function() {
@@ -50,20 +52,17 @@ var RCApp = {
 	addArtistHtml: function() {
 		var artistList = document.getElementById('artists'),
 		name = document.getElementById('artist-name').value
-		nameHTML = "<li id='" + name + "'>" + name + "</li>",
-		buttonHTML = "<button class='add-artist-to-album' id='" + name + "-button>Add Artist to Album</button>";
-		(artistList.innerHTML + buttonHTML) += nameHTML;
+		nameHTML = "<li id='" + name + "'>" + name + "</li>"
+		buttonHTML= "<button class='show-albums'>Show Albums</button>";
+		artistList.innerHTML += nameHTML + buttonHTML;
 	},
-
-	// artistAlbumButton: function() {
-
-	// },
 
 	//Click event for Submit Artist button.
 	submitArtistClick: function() {
 		RCApp.addArtist();
 		RCApp.addArtistHtml();
 		RCApp.hideArtistForm();
+		RCApp.setShowAlbums();
 	},
 
 	//-----ALBUMS-----//
@@ -89,6 +88,10 @@ var RCApp = {
 	//Set up show/hide album form functions.
 	showAlbumForm: function() {
 		RCApp.albumForm.style.display = "block";
+		document.getElementById('album-name').value = "";
+		document.getElementById('album-desc').value = "";
+		document.getElementById('album-genre').value = "";
+
 	},
 
 	hideAlbumForm: function() {
@@ -128,12 +131,17 @@ var RCApp = {
 	//-----ADD ALBUM-----
 	//Define album select event listeners
 	setShowAlbums: function() {
-		document.getElementsByClassName('show-albums')[0].addEventListener('click', RCApp.showAlbumDropdown);
+		var i = 0,
+		array = document.getElementsByClassName('show-albums')
+			for (; i < array.length;) {
+				array[i].addEventListener('click', RCApp.showAlbumDropdown);
+				i += 1;
+			};
 	},
 
-	setHideAlbums: function() {
-		document.getElementsByClassName('hide-albums')[0].addEventListener('click', RCApp.hideAlbumDropdown);
-	},
+	// setHideAlbums: function() {
+	// 	document.getElementsByClassName('hide-albums')[0].addEventListener('click', RCApp.hideAlbumDropdown);
+	// },
 
 	//Define show/hide dropdown functions
 	showAlbumDropdown: function() {
@@ -181,6 +189,5 @@ RCApp.setSubmitAlbumEvent();
 RCApp.setCancelAlbumEvent();
 
 //Album dropdown event listeners.
-RCApp.setShowAlbums();
-RCApp.setHideAlbums();
+
 
