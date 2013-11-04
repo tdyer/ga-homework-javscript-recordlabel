@@ -13,11 +13,11 @@
         <p id='rc-name'> Elf Records </p>
         <p id='rc-description'> Proving the Underdog can Rock since 1971. </p>
         <ul class='nav'>
-          <li><a id='add-artist' onClick='RCApp.add_artist();return false;'>Artists</a></li>
-          <li><a id='add-album' onClick='RCApp.add_album();return false;'>Albums</a></li>
+          <li><a onClick='RCApp.show_artist_list();return false;'>Artists</a></li>
+          <li><a onClick='RCApp.show_album_list();return false;'>Albums</a></li>
         </ul>
       </div> <!-- header -->
-      <button id='show-artist-form-button' class='secret'>Add New Artist</button>
+      <button id='add-artist' class='secret' onClick='RCApp.add_artist();return false;'>Add New Artist</button>
       <form id='artist-form' class='secret'>
         <div>
           <label for='artist-name'> Artist Name </label>
@@ -29,8 +29,9 @@
         </div>
         <input type='submit' id='artist-submit' value='Add Artist'>
       </form>
-      <h2>List of Artists</h2>
+      
       <ul id='artists' class='secret'>
+        <h2>List of Artists</h2>
         <li>
           <h3>Artist1</h3>
             <button id='show-list-of-existing-albums'>Add Artist to an Album</button>
@@ -39,8 +40,9 @@
                   <li></li>
               </ul>
         </li>
+
       </ul>
-      <button id='show-album-form-button' class='secret'>Add New Album</button>
+      <button id='add-album' class='secret' onClick='RCApp.add_album();return false;'>Add New Album</button>
       <form id='album-form' class='secret'>
         <div>
           <label for='album-title'>Title </label>
@@ -87,8 +89,9 @@
         </div> <!-- genre-selections -->
         <input type='submit' id='album-submit' value="Add Album">
       </form>
-      <h2>List of Albums</h2>
+      
       <ul id='albums' class='secret'>
+        <h2>List of Albums</h2>
           <li>
             <h3>Album1</h3>
               <button id='show-list-of-existing-artists'>Add Album to an Artist</button>
@@ -97,6 +100,7 @@
                     <li></li>
                 </ul>
           </li>
+
       </ul>
 
      

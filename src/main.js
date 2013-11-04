@@ -20,13 +20,29 @@ var RCApp = {
 //where Artist would be
 //where Album would be
 
+  show_artist_list: function(e){
+    var alist = document.getElementById('artists');
+     if (alist.className ==='not_secret')
+      alist.className = 'secret';
+    else
+      alist.className = 'not_secret';
+  },
+
+   show_album_list: function(e){
+    var alist = document.getElementById('albums');
+     if (alist.className ==='not_secret')
+      alist.className = 'secret';
+    else
+      alist.className = 'not_secret';
+  },
+
   add_artist: function(e){
-  var artist_name = "", artist,
-  form = document.getElementById('artist-form');
-  if (form.className ==='not_secret')
-      form.className = 'secret';
-  else
-  form.className = 'not_secret'; 
+    var artist_name = "", artist,
+    form = document.getElementById('artist-form');
+    if (form.className ==='not_secret')
+        form.className = 'secret';
+    else
+        form.className = 'not_secret'; 
 
   },
 
