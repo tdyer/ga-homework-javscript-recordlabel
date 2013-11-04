@@ -135,12 +135,15 @@ RCApp.Artist = function(name, description) {
 
 RCApp.Artist.prototype.generate_html = function() {
 	var artistHTML = document.getElementById('artists').innerHTML,
+	descHTML = document.getElementById('artist-desc').innerHTML,		
 	max = RCApp.artists.length; 
 	i = 0; 
 	for(; i < max;) {
-		artistHTML += "<li id="+ i +  ">" + RCApp.artists[i].artist_name + "   "  + RCApp.artists[i].artist_desc + "</li>";
+		artistHTML += "<li id="+ i +  ">" + RCApp.artists[i].artist_name + "</li>";
+		descHTML += "<li id=" + i + " " + "class=" + "\'hide\'" + ">"  + RCApp.artists[i].artist_desc + "</li>";
 		i += 1;
 	};
+	document.getElementById('artist-desc').innerHTML = descHTML;
 	document.getElementById('artists').innerHTML = artistHTML;
 
 };
@@ -175,7 +178,6 @@ new RCApp.Artist("Florence & the Machince", "Britsh Indie Band Turned Internatio
 RCApp.setButtonEvent();
 RCApp.Artist.prototype.generate_html();
 RCApp.Album.prototype.generate_html();
-
 RCApp.albumsDropDown();
 
 
