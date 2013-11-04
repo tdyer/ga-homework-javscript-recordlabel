@@ -1,0 +1,15 @@
+.hide {
+	display: none;
+}
+
+.show {
+	display: inline;
+}
+
+.highlight {
+	background-color: yellow;
+}
+
+.no-highlight {
+	background-color: transparent;
+}
