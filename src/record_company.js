@@ -16,6 +16,7 @@ RCApp.RecordLabel = function(name, description){
     var mylabelname = document.getElementById('rc-description').innerHTML;
 
     registerEventHandler(document.getElementById('add-artist-form'), 'submit', this.createArtist.bind(this));
+    registerEventHandler(document.getElementById('add-album-form'), 'submit', this.createAlbum.bind(this));
 };
 
 // Instance Methods
@@ -27,6 +28,18 @@ RCApp.RecordLabel.prototype.createArtist = function(event){
  artist.generateHTML();
  this.artists.push(artist);
  RCApp.RecordLabel.hideArtistForm();
+ event.preventDefault();
+ return false;
+};
+
+RCApp.RecordLabel.prototype.createAlbum = function(event){
+ var name = document.getElementById('add-album-name').value,
+ desc = document.getElementById('add-album-desc').value,
+ genre = document.getElementById('add-album-genre').value,
+ album = new RCApp.Album(name, desc, genre);
+ album.generateHTML();
+ this.albums.push(album);
+ RCApp.RecordLabel.hideAlbumForm();
  event.preventDefault();
  return false;
 };
@@ -43,7 +56,7 @@ RCApp.RecordLabel.showArtistForm = function(){
 };
 
 RCApp.RecordLabel.showAlbumForm = function(){
-  document.getElementById('add-artist-form').style.display = 'block';
+  document.getElementById('add-album-form').style.display = 'block';
 };
 
 RCApp.RecordLabel.hideArtistForm = function(){
