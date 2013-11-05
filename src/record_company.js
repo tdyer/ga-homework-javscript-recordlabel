@@ -5,31 +5,53 @@ RCApp.RecordLabel = function(name, description){
     this.description = description;
     this.artists = [];
     this.albums = [];
-    this.artists = document.getElementById('artists');
-    this.albums = document.getElementById('albums');
-    this.addArtistForm = document.getElementById('add-artist-form');
-    this.addAlbumForm = document.getElementById('add-album-form');
+    // this.artistsEl = document.getElementById('artists');
+    // this.albumsEl = document.getElementById('albums');
+    // this.hideNewArtistForm();
+    // this.hideNewAlbumForm();
+
+    document.getElementById('rc-name').innerHTML = "<h1>" + this.name + "</h1>";
+    document.getElementById('rc-description').innerHTML = "<h3>" + this.description + "</h3>";
     
-    this.hideNewArtistForm();
-    this.hideNewAlbumForm();
+    var mylabelname = document.getElementById('rc-description').innerHTML;
 
-    document.getElementById('rc-name').innerHTML = this.name;
-    document.getElementById('rc-description').innerHTML = this.description;
-    
-};
-RCApp.RecordLabel.prototype.hideNewArtistForm = function(){
-  this.addArtistForm.style.display = 'none';
+    registerEventHandler(document.getElementById('add-artist-form'), 'submit', this.createArtist.bind(this));
 };
 
-RCApp.RecordLabel.prototype.hideNewAlbumForm = function(){
-  this.addAlbumForm.style.display = 'none';
-};
-RCApp.RecordLabel.prototype.addArtist = function(artist){
-  artist.generate_html();
-  this.albums.push(artist);
+// Instance Methods
+RCApp.RecordLabel.prototype.createArtist = function(event){
+ // TODO: cache the add artist input fields
+ var name = document.getElementById('add-artist-name').value,
+ desc = document.getElementById('add-artist-desc').value,
+ artist = new RCApp.Artist(name, desc);
+ artist.generateHTML();
+ this.artists.push(artist);
+ RCApp.RecordLabel.hideArtistForm();
+ event.preventDefault();
+ return false;
 };
 
-RCApp.RecordLabel.prototype.addAlbum = function(album){
-  album.generate_html();
-  this.albums.push(album);
+// Class Methods
+RCApp.RecordLabel.setupHandlers = function(){
+  // this.addArtistButtonHandler();
+ registerEventHandler(document.getElementById('add-artist'), 'click', this.showArtistForm);
+ registerEventHandler(document.getElementById('add-album'), 'click', this.showAlbumForm);
 };
+
+RCApp.RecordLabel.showArtistForm = function(){
+  document.getElementById('add-artist-form').style.display = 'block';
+};
+
+RCApp.RecordLabel.showAlbumForm = function(){
+  document.getElementById('add-artist-form').style.display = 'block';
+};
+
+RCApp.RecordLabel.hideArtistForm = function(){
+  document.getElementById('add-artist-form').style.display = 'none';
+};
+
+RCApp.RecordLabel.hideAlbumForm = function(){
+  document.getElementById('add-album-form').style.display = 'none';
+};
+
+
