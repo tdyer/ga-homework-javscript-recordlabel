@@ -19,6 +19,8 @@ RCApp.Artist.prototype.setupHandlers = function(){
 };
 
 RCApp.Artist.prototype.showArtist = function(){
-  var showText = "<br/>Description: <p>" + this.description + "</p>";	
-  document.getElementById(this.name).innerHTML += showText;
+  var showText = "<div id='"+ this.name + "_desc'><br/>Description: <p>" + this.description + "</p>";	
+  if(document.getElementById(this.name + "_desc") === null){
+    document.getElementById(this.name).innerHTML += showText;
+  };
 };
