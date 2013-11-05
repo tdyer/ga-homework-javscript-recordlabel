@@ -19,8 +19,20 @@ RCApp.Artist.prototype.setupHandlers = function(){
 };
 
 RCApp.Artist.prototype.showArtist = function(){
-  var showText = "<div id='"+ this.name + "_desc'><br/>Description: <p>" + this.description + "</p>";	
+  var showText = "<div id='"+ this.name + "_desc'><br/>Description: <p>" + this.description + "</p>",
+  selectBox =this.showAllAlbums();	
   if(document.getElementById(this.name + "_desc") === null){
     document.getElementById(this.name).innerHTML += showText;
+    document.getElementById(this.name).innerHTML += selectBox;
   };
+};
+
+RCApp.Artist.prototype.showAllAlbums = function(){
+  var albums = RCApp.current_recordLabel.albums,
+  album_select = "<select>";
+
+  for (var i = 0; i < albums.length; i++){
+  	album_select += "<option name='" + albums[i].name + "'> " + albums[i].name + "</option>";
+  }
+  return album_select += "</select>";
 };
